@@ -1,0 +1,92 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import TOC from "@components/TOC";
+import PhHouseSimpleBold from "@components/icons/PhHouseSimpleBold.astro";
+import PhHouseSimple from "@components/icons/PhHouseSimple.astro";
+export interface Props {
+  title: string;
+}
+let posts = await Astro.glob("/src/pages/first-report/*.md");
+
+const orderPost = [
+  "intro",
+  "image-processing",
+  "grid-detection",
+  "solver",
+  "neural-network",
+  "references",
+];
+
+posts = posts.sort((prevPost, post) => {
+  let prevPostUrl = prevPost.url.split("/").pop();
+  let postUrl = post.url.split("/").pop();
+  return orderPost.indexOf(prevPostUrl) - orderPost.indexOf(postUrl);
+});
+
+// const { minutesRead } = Astro.props.frontmatter;
+const { headings } = Astro.props;
+---
+
+<BaseLayout {...Astro.props}>
+  <section class="overflow-hidden dark:bg-gray-800">
+    <!-- <div class="p-8 md:p-12 lg:px-16 lg:py-24"> -->
+    <div class="max-w-[65ch] py-4 md:py-8 mx-auto">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+        <!-- <a
+          class="font-bold bg-white text-gray-900 px-4 py-2 flex items-center gap-2 rounded"
+          href="/"
+        >
+          <PhHouseSimpleBold height={24} width={24} />
+          <span> Home</span>
+        </a> -->
+        <div>
+          <div class="flex justify-between">
+            <div>
+              <h2
+                class="text-3xl inline font-bold text-gray-900 dark:text-white"
+              >
+                First Report
+              </h2>
+              <p class="inline text-sm slashed-zero">09/10/2022</p>
+            </div>
+            <a class="font-bold bg-white text-gray-900 p-2 rounded" href="/">
+              <PhHouseSimpleBold height={24} width={24} />
+            </a>
+          </div>
+          <ul class="mt-4 flex flex-wrap w-full gap-4">
+            {
+              posts.map((post) => (
+                <li class="grow text-center hover:bg-white/30  bg-white/10 p-2  rounded">
+                  <a href={post.url} class="font-bold">
+                    {post.getHeadings()[0].text}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="relative pt-10 px-4">
+    <!-- <p>{minutesRead}</p> -->
+    <article
+      class="prose-stone md:[&>figure>img]:max-w-[80%] prose-headings:scroll-m-64 prose mx-auto prose-img:mx-auto prose-img:rounded-md prose-figcaption:text-center dark:prose-invert"
+    >
+      <slot />
+    </article>
+    <div id="left-sidebar" class="absolute top-4 right-0 bottom-0">
+      <div id="left-sidebar" class="self-start sticky top-16">
+        <TOC client:media="(min-width: 768px)" headings={headings} />
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style is:global>
+  .katex-display > .katex {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+</style>
