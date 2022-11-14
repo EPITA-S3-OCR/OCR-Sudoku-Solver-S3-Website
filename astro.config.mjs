@@ -16,21 +16,17 @@ export default defineConfig({
       "rehype-figure",
       // "rehype-mathjax",
       "rehype-katex",
-      // [
-      //   "rehype-katex",
-      //   {
-      //     strict: true,
-      //   },
-      // ],
+      "rehype-plugin-image-native-lazy-loading",
     ],
     extendDefaultPlugins: true,
   },
-  integrations: [tailwind(), mdx(), preact()],
+  integrations: [tailwind(), mdx(), preact(), image()],
 });
 import getReadingTime from "reading-time";
 import { toString } from "mdast-util-to-string";
 import mdx from "@astrojs/mdx";
 import preact from "@astrojs/preact";
+import image from "@astrojs/image";
 function remarkReadingTime() {
   return function (tree, { data }) {
     const textOnPage = toString(tree);

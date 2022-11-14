@@ -73,11 +73,18 @@ const TableOfContents: FunctionalComponent<Props> = ({ headings = [] }) => {
       <ul ref={toc}>
         {headings.map(({ depth, slug, text }) => {
           return (
+            // <li
+            //   class={`px-4 border-l-4 list-none list-outside p-0 header-link ${
+            //     currentID === slug
+            //       ? "bg-primary-900 border-primary-500"
+            //       : "border-primary-800"
+            //   }`.trim()}
+            // >
             <li
               class={`px-4 border-l-4 list-none list-outside p-0 header-link ${
                 currentID === slug
-                  ? "bg-primary-900 border-primary-500"
-                  : "border-primary-800"
+                  ? "bg-gray-800 border-gray-50"
+                  : "border-gray-800"
               }`.trim()}
             >
               <a

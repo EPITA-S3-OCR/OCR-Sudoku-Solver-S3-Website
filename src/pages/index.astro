@@ -1,11 +1,8 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 
-// import PhArrowCircleDown from "@components/icons/PhArrowCircleDown.astro";
-// import PhArrowCircleDownBold from "@components/icons/PhArrowCircleDownBold.astro";
 import Header from "@components/Header.astro";
 import Hero from "@components/Hero.astro";
-import PhUsersFour from "@components/icons/PhUsersFour.astro";
 
 let posts = await Astro.glob("./first-report/*.md");
 
@@ -27,38 +24,33 @@ posts = posts.sort((prevPost, post) => {
 const teams = [
   {
     name: "Eliott",
-    description:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
+    description: "Insert small description",
   },
   {
     name: "Titouan",
-    description:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
+    description: "Insert small description",
   },
   {
     name: "David",
-    description:
-      "Titouan is a french developer who loves to code and to learn new things. He is currently working on Astro and on his own projects.",
+    description: "Insert small description",
   },
   {
     name: "Raj",
-    description:
-      "Titouan is a french developer who loves to code and to learn new things. He is currently working on Astro and on his own projects.",
+    description: "Insert small description",
   },
 ];
+
+import { Icon } from "astro-icon";
 ---
 
 <BaseLayout>
   <!-- <Header /> -->
   <Hero />
-  <!-- <section
-    class="overflow-hidden p-8 md:p-12 lg:px-40 lg:py-24 sm:grid sm:grid-cols-2 bg-gray-800"
-  > -->
   <section class="overflow-hidden py-6 md:py-12 bg-gray-800">
     <div class="max-w-[65ch] mx-4 md:mx-auto sm:grid gap-8 sm:grid-cols-2">
       <div class="">
         <div class="mx-auto max-w-xl pb-4 md:p-0">
-          <PhUsersFour width={48} height={48} />
+          <Icon name="ph:users-four" width={48} height={48} />
           <h2
             class="text-3xl md:text-4xl pb-2 font-bold text-gray-900 dark:text-white"
           >
@@ -82,7 +74,6 @@ const teams = [
     </div>
   </section>
   <section class="overflow-hidden mb-32 px-4">
-    <!-- <div class="p-8 md:p-12 lg:px-16 lg:py-24"> -->
     <div class="max-w-[65ch] mx-auto py-12">
       <div class="mx-auto">
         <div class="flex items-end justify-between">
@@ -93,7 +84,7 @@ const teams = [
             <p class="inline text-sm slashed-zero">31/10/2022</p>
           </div>
           <a
-            href="https://github.com/epita-s3-ocr/OCR-Sudoku-Solver-S3-Project/blob/22ee2a23c90680c5b28a9c59d60496ea07792f8d/rapport_1.pdf"
+            href="/rapport_1.pdf"
             class="bg-gray-50 px-2 py-1 rounded-sm font-semibold text-black hover:bg-gray-300"
             >PDF</a
           >
