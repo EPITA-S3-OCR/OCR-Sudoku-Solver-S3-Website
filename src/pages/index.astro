@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-
 import Header from "@components/Header.astro";
 import Hero from "@components/Hero.astro";
 
@@ -98,8 +97,11 @@ import { Icon } from "astro-icon";
         <ul class="mt-4 flex flex-wrap w-full gap-4">
           {
             posts.map((post) => (
-              <li class="grow   text-center hover:bg-white/30  bg-white/10 p-2  rounded">
-                <a href={post.url} class="font-bold">
+              <li class="grow">
+                <a
+                  href={post.url}
+                  class="font-bold transition-all text-center hover:bg-gray-500 bg-gray-700 rounded p-2 block"
+                >
                   {post.getHeadings()[0].text}
                 </a>
               </li>
