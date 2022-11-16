@@ -14,15 +14,13 @@ At first a very simple neural network was implemented which was later improved o
 
 ![XOR truth table](/assets/neural-network/xor.png)
 
-<!-- ![XOR truth table](../assets/neural-network/xor.png) -->
-
 ## Model characteristics
 
 Neural networks always present **3 distincts layers**: **the input, hidden and output layer.** There could be as many nodes per layer as necessary and as many hidden layers as desired. The input layer can be defined as ultimately **containing the user inputs** and the output layer containing the **intelligently computed result**. The hidden layers constitute the real magic of the neural network since it’s where all the processes and adjustments take place and where the neural network learns and adapts.
 
 For our XOR function, we only needed a very simple network. It was composed of an input layer containing **two nodes or neurons**, one for each user input. It also would only require only **one hidden layer composed of two neurons** and lastly a **single neuron for the output layer**.
 
-![XOR model](../assets/neural-network/xor-model.png)
+![XOR model](/assets/neural-network/xor-model.png)
 
 The model was then trained on tests batches with two inputs being 1-bit binary digits. After the training process completed, the output would be **compared with the expected output.** If the output did not match, the neural network would learn from its mistakes and **slightly adjust its parameters** to fix the issue on the next training batch as much as possible.
 
@@ -40,7 +38,7 @@ Lastly, we randomly choose which training set to use to train the neural network
 
 To make sure the informations given by each weights and biases was fed to each nest layer during the computation of a training batch, we needed to use a specific process called **forward propagation**. It depicts the process of going from one layer to the next layer and is used to determine the value of each node from the next layer. It is found by doing a **linear combination of the weights and the value of each of the previous layer’s nodes**. Once that is done, it is passed in an activation function. These are used to introduce non-linearity to neural networks and squashes the input into a smaller range. For example, we used a **sigmoid function**, which returns a number between 0 and 1 smoothly making a transition between the two as it can be seen from its graphical representation. Once this process is applied to the output layer, a predicted output to the training set is created.
 
-![Sigmoid function](../assets/neural-network/sigmoid-function.png)
+![Sigmoid function](/assets/neural-network/sigmoid-function.png)
 
 ### Backward propagation
 

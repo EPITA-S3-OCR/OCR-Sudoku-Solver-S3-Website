@@ -8,11 +8,11 @@ layout: "@layouts/BlogLayout.astro"
 
 There are a couple of well-known algorithms to find a solution of a sudoku grid, the main of which is **backtracking**. This algorithm can be both described as a **“brute force”** and **“depth-first” search**, because it works by exploring the “branch” of a possible solution before going to the next one, exhausting every single possibility if necessary.
 
-![Backtracking algortihm](../assets/solver/backtracking.png)
+![Backtracking algortihm](/assets/solver/backtracking.png)
 
 To make a long story short, it works by first filling an empty cell of the sudoku grid with a possibly valid number. The program then continues by considering all of its previous statements to be correct and fills in as many cells as possible until it encounters an inconsistency defined by the rules of sudoku: no more than one same number per square, row or column. If such a case occurs, the algorithm goes backwards, hence its name, and **restarts generating valid numbers from the last stable point**. This process of trial and error continues until a valid (and unique) solution to the initially provided sudoku grid is found. It is also possible, however, that the sudoku being considered is **not** **solvable**: such a case is more likely and easily reached than one would imagine and may take the algorithm longer to figure out. But assuming that the sudoku is solvable, this method still has some flaws. Just like any other brute-forcing algorithm, checking all possibilities has a **certain computational cost**. In addition, there exists sudoku grids intrinsically designed to complicate the task of this kind of algorithm by **maximizing the number of trials** that the program will have to compute.
 
-![Sudoku grid](../assets/solver/grid.png)
+![Sudoku grid](/assets/solver/grid.png)
 
 This is the type of algorithm that was chosen to be implemented for the first defense of the project, but extensive research by the team members revealed a potentially better alternative: **Algorithm X**.
 
@@ -76,8 +76,8 @@ After having a way to solve the sudoku itself, another important part **is how t
 
 <figure>
   <div class="flex justify-center">
-    <img src="../assets/solver/Untitled%202.png" alt="File loading">
-    <img src="../assets/solver/Untitled%203.png" alt="File loading">
+    <img src="/assets/solver/Untitled%202.png" alt="File loading">
+    <img src="/assets/solver/Untitled%203.png" alt="File loading">
   </div>
   <figcaption>File loading</figcaption>
 </figure>

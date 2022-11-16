@@ -13,7 +13,7 @@ The Hough transform algorithm works by converting each point $(x,y)$ of the cart
 
 To start the algorithm we create a new table properly dimensionned in order to store all values in the polar frame. We loop through each pixel in the binarized image, and if the pixel is white we trace the line corresponding to it using the formula in Figure~\ref{fig:image lines}. **As the number of crossing at the same intersection point increases, becomes more and more likely a line lines connect**.
 
-![Hough transform space](../assets/image-processing/hough.png)
+![Hough transform space](/assets/image-processing/hough.png)
 
 We then loop in the polar coordinates matrix to get the maximum value, which is in fact the largest amount of intersection of lines. It will therefore define the main line in cartesian coordinates **that would have to be traced on the initial image**.
 
@@ -21,8 +21,8 @@ Once we have the maximum value, we can trace and store all lines that are **at l
 
 <figure>
   <div class="grid grid-cols-2 items-center gap-8">
-    <img src="../assets/image-processing/accumulator.jpg" alt="File loading">
-    <img src="../assets/image-processing/6-lines.jpg" alt="File loading">
+    <img src="/assets/image-processing/accumulator.jpg" alt="File loading">
+    <img src="/assets/image-processing/6-lines.jpg" alt="File loading">
   </div>
   <figcaption>Hough transform process</figcaption>
 </figure>
@@ -44,7 +44,7 @@ After detecting every square, we needed to find the top left and bottom right po
 
 At this point, we have a starting point $(x,y)$ and two distances **ready for the image-splitting algorithm**.
 
-![Squares detected on the example image](../assets/image-processing/9-draw_squares.jpg)
+![Squares detected on the example image](/assets/image-processing/9-draw_squares.jpg)
 
 ## Image splitting
 

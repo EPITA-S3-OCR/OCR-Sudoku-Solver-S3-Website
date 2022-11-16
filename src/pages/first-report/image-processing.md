@@ -6,7 +6,7 @@ layout: "@layouts/BlogLayout.astro"
 
 One of the major parts of the project was obviously the processing of the image of the sudoku grid provided by the user when the program is launched. We will therefore present this part **by applying each of the processing functions successively in the chronological order** in which they appear in our code. We will use one of the grid images **provided in the book of specifications** of the project to illustrate our points and to observe more precisely the effects of **each stage of the process**.
 
-![The original image](../assets/image-processing/sudoku5.jpg)
+![The original image](/assets/image-processing/sudoku5.jpg)
 
 The first step before starting the processing was to be able to load and convert the studied image into a surface using the SDL_Surface structure of the SDL2_Image graphics library. The latter allows **any image to be imported from the file explorer and converted into different formats**.
 
@@ -20,7 +20,7 @@ $$
 Gray = R * 0.2126 + G * 0.7152 + B * 0.0722
 $$
 
-![Image after grayscale step](../assets/image-processing/1-grayscale.jpg)
+![Image after grayscale step](/assets/image-processing/1-grayscale.jpg)
 
 ## Enhancements
 
@@ -45,7 +45,7 @@ $$
     NewPixelValue = 255 - \left(\frac{255}{MaxPixelValue} * PixelValue\right)
 $$
 
-![Image after brightness normalization step](../assets/image-processing/2-contrast.jpg)
+![Image after brightness normalization step](/assets/image-processing/2-contrast.jpg)
 
 ## Noise reduction
 
@@ -70,13 +70,13 @@ GaussianMatrix =
 \end{pmatrix}
 $$
 
-![Image after noise reduction step](../assets/image-processing/3-denoise.jpg)
+![Image after noise reduction step](/assets/image-processing/3-denoise.jpg)
 
 ## Local threshold
 
 The image then needed to be flattened and a compensation for exposition disparity was required. In fact, some alteration could lead to bad interpretation if the latter case wasn't taken care of. We therefore used **a local thresholding technique** instead of a general one because some images might have a different exposition level. This part is called "**binarization**", which means that the output pixels array contains only pixels having the value white or black. The algorithm then computes the threshold or the average of the 9 pixels around the current pixel. It loops through each pixel assigns it the color **white if the current pixel is above the threshold, black otherwise**.
 
-![Image after local threshold step](../assets/image-processing/4-local_threshold.jpg)
+![Image after local threshold step](/assets/image-processing/4-local_threshold.jpg)
 
 ## Sobel edge detection
 
@@ -101,8 +101,8 @@ We calculated both operators in the x and y direction and sum those two products
 
 <figure>
   <div class="grid grid-cols-1 md:grid-cols-2 justify-center gap-8">
-    <img src="../assets/image-processing/sudoku5.jpg" alt="Original example image" />
-    <img src="../assets/image-processing/5-sobel.jpg" alt="Image after Sobel edge detection" /> 
+    <img src="/assets/image-processing/sudoku5.jpg" alt="Original example image" />
+    <img src="/assets/image-processing/5-sobel.jpg" alt="Image after Sobel edge detection" /> 
   </div>
   <figcaption>Comparison Original Image VS Image after sobel edge detection</figcaption>
 </figure>
