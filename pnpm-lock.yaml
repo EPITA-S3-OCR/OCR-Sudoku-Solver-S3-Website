@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@astrojs/image': ^0.11.4
   '@astrojs/mdx': ^0.11.5
+  '@astrojs/netlify': ^1.2.1
   '@astrojs/preact': ^1.2.0
   '@astrojs/tailwind': ^2.1.2
   '@tailwindcss/typography': ^0.5.7
@@ -28,6 +29,7 @@ specifiers:
 dependencies:
   '@astrojs/image': 0.11.4
   '@astrojs/mdx': 0.11.5
+  '@astrojs/netlify': 1.2.1
   '@astrojs/preact': 1.2.0_preact@10.11.2
   '@astrojs/tailwind': 2.1.2_tailwindcss@3.2.2
   add: 2.0.6
@@ -177,6 +179,13 @@ packages:
       micromark-util-types: 1.0.2
       uvu: 0.5.6
       vfile-message: 3.1.2
+    dev: false
+
+  /@astrojs/netlify/1.2.1:
+    resolution: {integrity: sha512-6ISps3454K4Jgf5fUfp2IjDQ19w5rgRJcy1BxV+Ke1BE7lraRdqg+Ywp0rytJz0jNbw5vz5gvajMZtTffHeA8w==}
+    dependencies:
+      '@astrojs/webapi': 1.1.1
+      esbuild: 0.14.54
     dev: false
 
   /@astrojs/preact/1.2.0_preact@10.11.2:
