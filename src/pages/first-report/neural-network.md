@@ -12,7 +12,9 @@ The XOR operation, often used to verify and confirm the integrity of a specific 
 
 At first a very simple neural network was implemented which was later improved once the team was able to grasp the essence of neural networks. This improved neural network was made using classes and includes a variety of new features such as being able to store a neural network in a file for later use.
 
-![XOR truth table](../assets/neural-network/xor.png)
+![XOR truth table](/assets/neural-network/xor.png)
+
+<!-- ![XOR truth table](../assets/neural-network/xor.png) -->
 
 ## Model characteristics
 
