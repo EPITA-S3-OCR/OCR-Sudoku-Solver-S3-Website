@@ -5,6 +5,8 @@ import Hero from "@components/Hero.astro";
 
 let posts = await Astro.glob("./first-report/*.md");
 
+let postsFinal = await Astro.glob("./final-report/*.md");
+
 const orderPost = [
   "intro",
   "image-processing",
@@ -14,10 +16,26 @@ const orderPost = [
   "references",
 ];
 
+const orderPostFinal = [
+  "intro-final",
+  "image-processing-final",
+  "grid-detection-final",
+  "solver-final",
+  "neural-network-final",
+  "references-final",
+  "ui-final",
+];
+
 posts = posts.sort((prevPost, post) => {
   let prevPostUrl = prevPost.url.split("/").pop();
   let postUrl = post.url.split("/").pop();
   return orderPost.indexOf(prevPostUrl) - orderPost.indexOf(postUrl);
+});
+
+postsFinal = postsFinal.sort((prevPost, post) => {
+  let prevPostUrl = prevPost.url.split("/").pop();
+  let postUrl = post.url.split("/").pop();
+  return orderPostFinal.indexOf(prevPostUrl) - orderPostFinal.indexOf(postUrl);
 });
 
 const teams = [
@@ -111,4 +129,39 @@ import { Icon } from "astro-icon";
       </div>
     </div>
   </section>
+
+  <section class="overflow-hidden mb-32 px-4">
+    <div class="max-w-[65ch] mx-auto py-12">
+      <div class="mx-auto">
+        <div class="flex items-end justify-between">
+          <div>
+            <h2 class="text-3xl inline font-bold text-gray-900 dark:text-white">
+              Final Report
+            </h2>
+            <p class="inline text-sm slashed-zero">14/12/2022</p>
+          </div>
+          <a
+            href="/rapport_2.pdf"
+            class="bg-gray-50 px-2 py-1 rounded-sm font-semibold text-black hover:bg-gray-300"
+            >PDF</a
+          >
+        </div>
+        <ul class="mt-4 flex flex-wrap w-full gap-4">
+          {
+            postsFinal.map((post) => (
+              <li class="grow">
+                <a
+                  href={post.url}
+                  class="font-bold transition-all text-center hover:bg-gray-500 bg-gray-700 rounded p-2 block"
+                >
+                  {post.getHeadings()[0].text}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+  
 </BaseLayout>
