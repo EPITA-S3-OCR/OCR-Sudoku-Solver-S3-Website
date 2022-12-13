@@ -1,5 +1,5 @@
 ---
-layout: "@layouts/BlogLayout.astro"
+layout: "@layouts/BlogLayoutFinal.astro"
 ---
 
 # Solver
@@ -77,7 +77,6 @@ After having a way to solve the sudoku itself, another important part **is how t
 
 <figure>
   <div class="flex justify-center">
-    <img src="/assets/solver/16x16unsolved.png" alt="File loading">
     <img src="/assets/solver/architecture.png" alt="File loading">
     <img src="/assets/solver/3x3solved.png" alt="File loading">
   </div>
@@ -157,7 +156,7 @@ Once we have found it, we iterate over the doubly-linked circular list of choice
 
 As we said earlier, in the context of Algorithm X applied to solving Sudoku puzzles, MRV stands for "Minimum Remaining Values". This optimization is **a heuristic that can be used to improve the performance of the algorithm**. The basic idea behind MRV is to prioritize the cells with the fewest remaining possible values when making recursive calls. This is based **on the observation that cells with a small number of remaining values are more likely to lead to a solution**, and therefore should be explored first. By prioritizing these cells, we can reduce the number of recursive calls and improve the overall performance of the algorithm. To implement the MRV heuristic in the Algorithm X implementation, we did not modify the main function **but rather the recursive function** we had designed for the Dancing Links implementation, now renaming it "solveRecAlgoX_MRV()" function.
 
-![](/assets/solver/mvr.png)
+![](/assets/solver/mrv.png)
 
 This time, we are not interested **in finding the next empty cell but rather finding the cell with the fewest number of remaining choices using the MRV heuristic**. This is done by iterating over all the empty cells in the grid and counting the number of remaining choices for each cell. The cell with the **fewest number of remaining choices** is then selected as the next cell to be considered in the search for a solution.
 

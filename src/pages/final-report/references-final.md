@@ -1,5 +1,5 @@
 ---
-layout: "@layouts/BlogLayout.astro"
+layout: "@layouts/BlogLayoutFinal.astro"
 ---
 
 # References

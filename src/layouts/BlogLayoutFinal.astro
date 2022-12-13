@@ -1,0 +1,92 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import TOC from "@components/TOC";
+import { Icon } from "astro-icon";
+export interface Props {
+  title: string;
+}
+let posts = await Astro.glob("/src/pages/final-report/*.md");
+
+const orderPost = [
+  "intro-final",
+  "image-processing-final",
+  "grid-detection-final",
+  "solver-final",
+  "neural-network-final",
+  "references-final",
+  "ui-final",
+];
+
+posts = posts.sort((prevPost, post) => {
+  let prevPostUrl = prevPost.url.split("/").pop();
+  let postUrl = post.url.split("/").pop();
+  return orderPost.indexOf(prevPostUrl) - orderPost.indexOf(postUrl);
+});
+
+const { headings } = Astro.props;
+---
+
+<BaseLayout {...Astro.props}>
+  <section class="overflow-hidden dark:bg-gray-800">
+    <div class="max-w-[65ch] px-4 md:px-0 py-4 md:py-8 mx-auto">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+        <div>
+          <div class="flex justify-between">
+            <div>
+              <h2
+                class="text-3xl inline font-bold text-gray-900 dark:text-white"
+              >
+                Final Report
+              </h2>
+              <p class="inline text-sm slashed-zero">09/10/2022</p>
+            </div>
+            <a class="font-bold bg-white text-gray-900 p-2 rounded" href="/">
+              <Icon name="ph:house-simple-bold" height={24} width={24} />
+            </a>
+          </div>
+          <ul class="mt-4 flex flex-wrap w-full gap-4">
+            {
+              posts.map((post) => (
+                <li class="grow">
+                  <a
+                    href={post.url}
+                    class="font-bold transition-all text-center hover:bg-gray-500 bg-gray-700 rounded p-2 block"
+                  >
+                    {post.getHeadings()[0].text}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="relative pt-10 px-4 pb-32">
+    <!-- <p>{minutesRead}</p> -->
+    <!-- <article
+      class="prose-stone prose-h1:before:bg-primary-700 prose-h1:before:-rotate-0 prose-h1:ml-2 prose-h1:before:rounded-md prose-h1:inline prose-h1:before:absolute prose-h1:before:-inset-2 prose-h1:relative prose-h1:before:-z-10 prose-h1:z-10 prose-h1:before:content-[''] md:[&>figure>img]:max-w-[80%] prose-headings:scroll-m-64 prose mx-auto prose-img:mx-auto prose-img:rounded-md prose-figcaption:text-center dark:prose-invert"
+    > -->
+    <article
+      class="prose-stone md:[&>figure>img]:max-w-[80%] prose-headings:scroll-m-64 prose mx-auto prose-img:mx-auto prose-img:rounded-md prose-figcaption:text-center dark:prose-invert"
+    >
+      <slot />
+    </article>
+    <div
+      id="left-sidebar"
+      class="hidden lg:block absolute top-4 right-0 bottom-0"
+    >
+      <div id="left-sidebar" class="self-start sticky top-16">
+        <TOC client:media="(min-width: 768px)" headings={headings} />
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style is:global>
+  .katex-display > .katex {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+</style>
