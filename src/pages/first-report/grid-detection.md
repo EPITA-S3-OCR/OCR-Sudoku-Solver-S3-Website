@@ -1,6 +1,5 @@
 ---
 layout: "@layouts/BlogLayout.astro"
-order: 1
 ---
 
 # Grid detection
@@ -20,7 +19,7 @@ We then loop in the polar coordinates matrix to get the maximum value, which is 
 Once we have the maximum value, we can trace and store all lines that are **at least of the value that is half of the maximum in the polar matrix**. Since this technique can produce a very large amount of lines, we reduced it by checking, when adding a new line, if there is one that is already approximately **placed at the same position in the list of all other lines**.
 
 <figure>
-  <div class="grid grid-cols-2 items-center gap-8">
+  <div class="grid md:grid-cols-2 items-center gap-8">
     <img src="/assets/image-processing/accumulator.jpg" alt="File loading">
     <img src="/assets/image-processing/6-lines.jpg" alt="File loading">
   </div>

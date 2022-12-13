@@ -70,7 +70,7 @@ const TableOfContents: FunctionalComponent<Props> = ({ headings = [] }) => {
           Table of Contents
         </h2>
       </div>
-      <ul ref={toc}>
+      <ul ref={toc} class="max-w-[30ch]">
         {headings.map(({ depth, slug, text }) => {
           return (
             // <li

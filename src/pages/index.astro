@@ -1,67 +1,57 @@
 ---
+import { Icon } from "astro-icon";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Header from "@components/Header.astro";
 import Hero from "@components/Hero.astro";
+import { orderPost, orderPostFinal } from "src/order";
 
 let posts = await Astro.glob("./first-report/*.md");
 
 let postsFinal = await Astro.glob("./final-report/*.md");
 
-const orderPost = [
-  "intro",
-  "image-processing",
-  "grid-detection",
-  "solver",
-  "neural-network",
-  "references",
-];
+let sortPosts = (posts, sortOrder) =>
+  posts.sort((prevPost, post) => {
+    let prevPostUrl = prevPost.url.split("/").pop();
+    let postUrl = post.url.split("/").pop();
+    return sortOrder.indexOf(prevPostUrl) - sortOrder.indexOf(postUrl);
+  });
 
-const orderPostFinal = [
-  "intro-final",
-  "image-processing-final",
-  "grid-detection-final",
-  "solver-final",
-  "neural-network-final",
-  "references-final",
-  "ui-final",
-];
+posts = sortPosts(posts, orderPost);
+postsFinal = sortPosts(postsFinal, orderPostFinal);
 
-posts = posts.sort((prevPost, post) => {
-  let prevPostUrl = prevPost.url.split("/").pop();
-  let postUrl = post.url.split("/").pop();
-  return orderPost.indexOf(prevPostUrl) - orderPost.indexOf(postUrl);
-});
-
-postsFinal = postsFinal.sort((prevPost, post) => {
-  let prevPostUrl = prevPost.url.split("/").pop();
-  let postUrl = post.url.split("/").pop();
-  return orderPostFinal.indexOf(prevPostUrl) - orderPostFinal.indexOf(postUrl);
-});
-
-const teams = [
+interface Member {
+  name: string;
+  link: string;
+  description: string;
+  github: string;
+}
+const teams: Member[] = [
   {
-    name: "Eliott",
+    name: "🦆 Eliott",
     link: "https://cri.epita.fr/users/eliott.flechtner/",
-    description: "Leader. All around good guy.",
+    description:
+      "18 years of existence, probably currently talking to a rubber-duck. Coding stuff ig...?",
+    github: "https://github.com/CapnDev-Git",
   },
   {
     name: "David",
     link: "https://cri.epita.fr/users/david-ortiz.calderon/",
     description: "Not so far from Bouchet.",
+    github: "https://github.com/Davidca089",
   },
   {
     name: "💯 Raj",
     link: "https://cri.epita.fr/users/raj-sunil.mahajan-aka-mali/",
     description: "The GOAT.",
+    github: "https://github.com/CaliberMan",
   },
   {
     name: "Titouan",
     link: "https://cri.epita.fr/users/titouan.verhille/",
-    description: "The one who does the most work.",
+    description: "Loving GCC for it stability.",
+    github: "https://github.com/titouv",
   },
 ];
-
-import { Icon } from "astro-icon";
 ---
 
 <BaseLayout>
@@ -86,7 +76,7 @@ import { Icon } from "astro-icon";
         {
           teams.map((member) => (
             <li>
-              <a href={member.link} class="font-bold">
+              <a href={member.github} class="font-bold">
                 {member.name} :{" "}
               </a>
               <a>{member.description}</a>
@@ -96,7 +86,7 @@ import { Icon } from "astro-icon";
       </ul>
     </div>
   </section>
-  <section class="overflow-hidden mb-32 px-4">
+  <section class="overflow-hidden px-4">
     <div class="max-w-[65ch] mx-auto py-12">
       <div class="mx-auto">
         <div class="flex items-end justify-between">
@@ -104,7 +94,7 @@ import { Icon } from "astro-icon";
             <h2 class="text-3xl inline font-bold text-gray-900 dark:text-white">
               First Report
             </h2>
-            <p class="inline text-sm slashed-zero">31/10/2022</p>
+            <p class="inline text-sm slashed-zero">30/10/2022</p>
           </div>
           <a
             href="/rapport_1.pdf"
@@ -138,7 +128,7 @@ import { Icon } from "astro-icon";
             <h2 class="text-3xl inline font-bold text-gray-900 dark:text-white">
               Final Report
             </h2>
-            <p class="inline text-sm slashed-zero">14/12/2022</p>
+            <p class="inline text-sm slashed-zero">11/12/2022</p>
           </div>
           <a
             href="/rapport_2.pdf"
@@ -163,5 +153,9 @@ import { Icon } from "astro-icon";
       </div>
     </div>
   </section>
-  
+  <div class="text-center">
+    <a class="font-bold px-10 py-10 hover:bg-gray-500 bg-gray-700 rounded">
+      Test</a
+    >
+  </div>
 </BaseLayout>

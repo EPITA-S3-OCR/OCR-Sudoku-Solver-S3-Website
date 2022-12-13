@@ -1,15 +1,11 @@
 ---
 layout: "@layouts/BlogLayout.astro"
+title: "User Interface"
 ---
-
-# UI
 
 After the first defense, we knew the major part until this new defense **was building the User Interface**. Some members of the group had already worked on **the design and creation of a user interface**. We wanted it to be as **clear**, **uncluttered** and **simplistic** as possible. We think that being able to use new tools for a new purpose is very important for an engineer.
 
-
-
 To assist us in this task we used the **GTK-3.0 library**, a C library containing a lot of element structures in order to build simplified **but still low-level graphical interfaces**. The resulting window is in fact a **concrete representation of an XML** - or Extensible Markup Language - file. So, instead of having to manually move the position of several dozen elements through a code editor, we used Glade, **a software editor made to generate these famous XML files by offering an easy-to-use construction interface**. We could then easily add many buttons and features. The complex part was to adapt as well as to be able to emit and receive the signals of the various components of the window. We also **used CSS to embellish the look of some of our buttons and sliders to match the clean look we wanted to express**.
-
 
 ## Design phase \& ideas
 
@@ -21,14 +17,38 @@ A little later, we decided to **drastically modify the first prototype we had de
 
 ![Second UI Design](/assets/ui/image1.png)
 
-
 The last version which was the final version of the project implemented **three separate parts in the interface**. With the use of 3 distinct tabs, we could thus mark the distinction between **the different steps in order not to lose the user in the large amount of functionality**. This new window design was purely aesthetic and did not bring any new features in itself.
 
 ![Last UI Design](/assets/ui/last.png)
 
 ## Final sudoku solution image renderer
 
-To represent the solved sudoku grid, we used the MagickWand library to add text  on the image according to the numbers **returned by our post-processing image resolution function**. The MagickWand API is a C-language API for the ImageMagick image manipulation library. ImageMagick is an **open-source library that provides tools for creating, modifying, and converting images in a variety of formats**. The MagickWand API provides a simple, high-level interface for accessing the capabilities of ImageMagick, which allows us to easily perform common image manipulation tasks such as resizing, cropping, and applying filters.
+To represent the solved sudoku grid, we used the MagickWand library to add text on the image according to the numbers **returned by our post-processing image resolution function**. The MagickWand API is a C-language API for the ImageMagick image manipulation library. ImageMagick is an **open-source library that provides tools for creating, modifying, and converting images in a variety of formats**. The MagickWand API provides a simple, high-level interface for accessing the capabilities of ImageMagick, which allows us to easily perform common image manipulation tasks such as resizing, cropping, and applying filters.
 To use the MagickWand API, one would typically **create a new MagickWand object,** and then use various MagickWand functions to manipulate the image. No matter the transformations one could imagine a typical main function looking like this:
 
-![](/assets/ui/magikwand.png)
+```c
+#include <wand/magick_wand.h>
+
+int main(int argc, char **argv)
+{
+  MagickWand *mw = NULL;
+
+  // Initialize the MagickWand environment
+  MagickWandGenesis();
+  // Create a new MagickWand object
+  mw = NewMagickWand();
+  // Read the image file into the MagickWand object
+  MagickReadImage(mw, "input.jpg");
+  // Apply transformations like grayscale, drawing, etc…
+  // Save the image to a new file
+  MagickWriteImage(mw, "output.jpg");
+
+  // Clean up and destroy the MagickWand object
+  DestroyMagickWand(mw);
+  mw = NULL;
+  // Shut down the MagickWand environment
+  MagickWandTerminus();
+
+  return 0;
+}
+```

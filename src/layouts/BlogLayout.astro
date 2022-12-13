@@ -1,28 +1,45 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import TOC from "@components/TOC";
+import GoBackToTop from "@components/GoBackToTop";
 import { Icon } from "astro-icon";
+import { orderPost, orderPostFinal } from "src/order";
+const { headings, url } = Astro.props;
+const { title, minutesRead } = Astro.props.frontmatter;
+
+const report = url.split("/")[1];
+const capitalizeFirstLetter = (string: string) => {
+  string = string.replace(/-/g, " ");
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+const reportName = capitalizeFirstLetter(report);
+
 export interface Props {
   title: string;
 }
-let posts = await Astro.glob("/src/pages/first-report/*.md");
 
-const orderPost = [
-  "intro",
-  "image-processing",
-  "grid-detection",
-  "solver",
-  "neural-network",
-  "references",
-];
+let posts = await Astro.glob("/src/pages/**/*.md");
 
-posts = posts.sort((prevPost, post) => {
-  let prevPostUrl = prevPost.url.split("/").pop();
-  let postUrl = post.url.split("/").pop();
-  return orderPost.indexOf(prevPostUrl) - orderPost.indexOf(postUrl);
-});
+let sortPosts = (report, posts, sortOrder) => {
+  posts = posts.reduce((acc, post) => {
+    let postUrl = post.url.split("/")[1];
+    if (postUrl == report) acc.push(post);
+    return acc;
+  }, []);
 
-const { headings } = Astro.props;
+  return posts.sort((prevPost, post) => {
+    let prevPostUrl = prevPost.url.split("/").pop();
+    let postUrl = post.url.split("/").pop();
+    return sortOrder.indexOf(prevPostUrl) - sortOrder.indexOf(postUrl);
+  });
+};
+console.log(report);
+
+if (report === "first-report") {
+  posts = sortPosts(report, posts, orderPost);
+} else if (report === "final-report") {
+  posts = sortPosts(report, posts, orderPostFinal);
+}
 ---
 
 <BaseLayout {...Astro.props}>
@@ -35,9 +52,11 @@ const { headings } = Astro.props;
               <h2
                 class="text-3xl inline font-bold text-gray-900 dark:text-white"
               >
-                First Report
+                {reportName}
               </h2>
-              <p class="inline text-sm slashed-zero">09/10/2022</p>
+              <p class="inline text-sm slashed-zero">
+                {report == "first-report" ? "30/10/2022" : "11/12/2022"}
+              </p>
             </div>
             <a class="font-bold bg-white text-gray-900 p-2 rounded" href="/">
               <Icon name="ph:house-simple-bold" height={24} width={24} />
@@ -62,13 +81,13 @@ const { headings } = Astro.props;
     </div>
   </section>
   <div class="relative pt-10 px-4 pb-32">
-    <!-- <p>{minutesRead}</p> -->
-    <!-- <article
-      class="prose-stone prose-h1:before:bg-primary-700 prose-h1:before:-rotate-0 prose-h1:ml-2 prose-h1:before:rounded-md prose-h1:inline prose-h1:before:absolute prose-h1:before:-inset-2 prose-h1:relative prose-h1:before:-z-10 prose-h1:z-10 prose-h1:before:content-[''] md:[&>figure>img]:max-w-[80%] prose-headings:scroll-m-64 prose mx-auto prose-img:mx-auto prose-img:rounded-md prose-figcaption:text-center dark:prose-invert"
-    > -->
     <article
       class="prose-stone md:[&>figure>img]:max-w-[80%] prose-headings:scroll-m-64 prose mx-auto prose-img:mx-auto prose-img:rounded-md prose-figcaption:text-center dark:prose-invert"
     >
+      <div>
+        <h1 class="inline-block">{title}</h1>
+        <span class="inline-block">{minutesRead}</span>
+      </div>
       <slot />
     </article>
     <div
@@ -78,6 +97,9 @@ const { headings } = Astro.props;
       <div id="left-sidebar" class="self-start sticky top-16">
         <TOC client:media="(min-width: 768px)" headings={headings} />
       </div>
+    </div>
+    <div class="fixed bottom-8 left-8">
+      <GoBackToTop client:load />
     </div>
   </div>
 </BaseLayout>

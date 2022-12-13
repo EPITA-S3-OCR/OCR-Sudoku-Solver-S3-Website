@@ -1,8 +1,7 @@
 ---
 layout: "@layouts/BlogLayout.astro"
+title: "Neural network"
 ---
-
-# XOR Neural Network
 
 ## Introduction
 
@@ -54,109 +53,63 @@ We also wanted to directly implement the saving or the import of the biases and 
 
 To recap, after a draft version of the code, the team undertook **the task of rewriting an organized and clean version of the existing code**. This new version, reusable and expandable in the future, allows to train a neural network a certain number of times given by the user. it also allows to import a text file containing the values of **a pre-trained neural network** to determine the value of the XOR operation **on two binary words of 8 bits each**.
 
-
 ## Optical Character Recognition neural network
 
 We knew that developing a neural network to detect numbers in a Sudoku grid **would be a crucial part of our project**. We wanted to start working on it as soon as possible to allow for ample experimentation and potential failures. We wanted to ensure that **we had enough time to develop and present a functional and efficient neural network** at the final defense.
 
-
-To prepare for future development, we** restructured the code}. This would prevent us from having to rewrite a lot of code at a later stage. We also made sure to work on the project together **by organizing development sessions in person or via Discord**. This allowed for **faster and more efficient communication** between group members, and enabled us to address technical aspects of the implementation. This new method of collaboration allowed us to **move forward quickly and avoid misunderstandings**.
-
+To prepare for future development, we** restructured the code}. This would prevent us from having to rewrite a lot of code at a later stage. We also made sure to work on the project together **by organizing development sessions in person or via Discord**. This allowed for **faster and more efficient communication** between group members, and enabled us to address technical aspects of the implementation. This new method of collaboration allowed us to **move forward quickly and avoid misunderstandings\*\*.
 
 To begin, we created **a new branch** on our GitHub repository specifically for the development of the new neural network. This allowed us to keep the code for the neural network **performing the XOR logic operation separate**. We duplicated the existing code and planned to adapt it to our new needs. However, after about 2 weeks without working on the project, we found that we could **no longer generalize the neural network as we had intended**. Despite our efforts to clearly name the data structures and define their roles, the code was **difficult to understand**.
 
-
 We went back and added comments to the code and made **the main file clearer and more concise**. We also ensured that the code was properly annotated, especially since some loops were only adapted for a specific case. This allowed us to better **identify the values that needed to be modified** to create the neural network we wanted. We also created macros that we could easily modify to change the number of neurons per layer in the network.
-
-
 
 In our project, we planned to train the network on 28x28 pixel images. This required **784 neurons on the input layer** of the neural network. Each of these neurons is connected to the second layer, or hidden layer, of the network, which has 16 neurons. This value was chosen based on research and reading articles on the subject. **16 neurons is often considered sufficient** for this type of neural network, but the number can be higher. We started with this number, remembering that it may change later. Our **output layer had 9 neurons, one for each potential digit to be identified in the image**.
 
-
 ![Model of the OCR neural network](/assets/neural-network/digitmodel.png)
 
-
 However, we discovered that our network could **only produce a single result**. For the network performing the XOR logic operation, there were only **two possible results: 1 or 0**. We had only one neuron on the final layer, and determined the interpretation of the network by rounding the final value to the nearest integer. For our new network, we needed **to obtain the results for each of the 9 neurons on the last layer**. These results could be interpreted as a sort of percentage of certainty regarding the interpretation of the number by the network.
-
 
 We therefore had to modify the way learning **was propagated forward and backwards during the back-propagation process**. This required changing some major parts of the code, which also allowed us to identify **some computational errors** in our code due to accesses **outside of certain arrays and resulting in unexpected behaviours**. These changes also affected the way we imported and saved the weights and biases, **since we only had one possible output result before**. Finally, we had to change the way we determined the interpretation of the network and checked if it was correct. Previously, we could check the result directly by performing the XOR operation in C and comparing it to the rounded value **in the single neuron of the output layer**. Now, we had to go through the array containing all the final values of the output layer and **determine the maximum value**. Its index, increased by 1, **constituted the value interpreted by the neural network**. To verify this, we were **labelling the image to be detected before training** the network on the current epoch, and used this result to affirm or deny the result calculated by the network.
 Once all these modifications were made, we wanted to test our network on some images we had made by hand in an editing software. These images were correctly sized and binarized, containing only white or black pixels. Using new commands set up to test the code from a terminal, we specified the path to the folder containing these images and a certain number of epochs to perform. We just wanted to see if the program could get some conclusive results; **we didn't expect it to perform well from the first tests**.
 
-
 However, when we started the tests, we quickly realized that the network **was not able to train itself properly** and learn from its mistakes during the calibration phase. After making sure to display the values in the last layer of the network, we saw that each of the 9 neurons tended, over time, **towards a probability of certainty of 1/9** and more generally of **$1/n$ with $n$ being the number of neurons in the output layer**. We didn't understand what could be causing this, especially since we had already checked our code several times and it was supposed to work in theory.
-
-
 
 Confident in the validity of our code, we went online and **read many articles and other resources but without success**. All of them confirmed that our implementation of the **stochastic gradient descent and forward and backward propagation algorithms was correct**.
 
-
-
 Going back to our code, we started to display most of the arrays containing the weights and biases of each neuron to potentially detect either a memory allocation problem not indicated by the compiler or to see if some values were inconsistent or abnormal. After a few days of research, we realized that from a certain epoch onwards, some of our biases - especially in the hidden and output layers - **were sometimes assigned the value NaN due to a division by 0 at some point in our program**. After more research, we learned that this phenomenon is referred to as **having an "explosive gradient"** and that our activation function, the **sigmoid**, was the source of the problem. For positive values higher than 15, the calculation of the activation value of any neuron was like **dividing 1 by 0**. After modifying it, we managed to train the neural network **with a success rate of about 85\%**. However, we only trained the network with about ten images, putting this result in perspective because **it was likely due to over-training rather than a stable and reliable success rate**.
-
-
 
 To improve the performance of our neural network, we made some minor adjustments, such as **displaying more elements in the console**. We also needed to train the neural network on a **larger image database than the original one**. This was necessary because we wanted the network to be able to detect images in **both ideal conditions and in cases where they were noisier and more difficult to recognize**.
 
-
-
 To achieve this, we needed to be able to **generate a training image database**, as well as determine an efficient and quick way to load the entire database. We also had to consider **how the network would select the images to train on during an epoch**. These challenges required careful planning and implementation.
-
-
 
 To create a bank of images to train our neural network, we wrote a **Python script to generate JPEG images of size 28x28 pixels**. These images were binarized, meaning that they only contained black or white pixels. In order to test the capabilities of our neural network, we generated images in **both ideal conditions** (i.e. containing a centered, unbroken and straight, readable figure) and **more complex, noisy conditions**. Each image contained a single number or letter, written in a different font **from the Google Fonts API**. We used the Asyncio Python module to **download the fonts in an asynchronous manner** to reduce the length of each generation and the Pillow module to generate the images **in multiprocessing mode for faster generation**. This script was also used **to generate soluble sudoku grids of sizes 9x9 and 16x16 for further testing**.
 
-
 <figure>
-  <div class="flex justify-center">
+  <div class="grid md:grid-cols-2 gap-2 justify-center max-w-prose">
     <img src="/assets/neural-network/sudoku9x9.png" alt="Neural Examples">
     <img src="/assets/neural-network/sudoku16x16.png" alt="Neural Examples">
   </div>
   <figcaption>Examples of a generated grid 9x9 and 16x16</figcaption>
 </figure>
 
-
 After considering several options, we decided **to load all the images from the image bank at the start of the training phase**. Each of the loaded images was **divided into sub-folders containing 9 images** each, from 1 to 9. An epoch consisted of choosing one of the sub-folders - or training sets - at random and **training the neural network on the 9 images contained in it**. This approach allowed the neural network to avoid over-training and be exposed to new images on a regular basis. Additionally, the images **were not processed in logical ascending order** within the same training set in order to avoid biasing the neural network and creating recognizable patterns.
 
-
-Using our system, we were able to run multiple training sessions of about **10000 epochs each on a database of  images under ideal conditions**. The neural network improved over time and began producing **very good results**. We then modified the training database by adding images where the figure was sometimes slightly tilted, and by varying the fonts and line thicknesses. As the neural network continued to provide convincing results, we added even more noisy images to the image bank using noise maps and filters that might be difficult for a human to identify. After several training sessions, the neural network **achieved a success rate of about 94\% on more than 150k epochs in total**.
-
-
+Using our system, we were able to run multiple training sessions of about **10000 epochs each on a database of images under ideal conditions**. The neural network improved over time and began producing **very good results**. We then modified the training database by adding images where the figure was sometimes slightly tilted, and by varying the fonts and line thicknesses. As the neural network continued to provide convincing results, we added even more noisy images to the image bank using noise maps and filters that might be difficult for a human to identify. After several training sessions, the neural network **achieved a success rate of about 94\% on more than 150k epochs in total**.
 
 Satisfied with the relatively low error rate we were able to achieve, we wanted **to test our neural network on a Sudoku grid image**. We connected the end of the image processing process, which included detecting the lines and locating the boxes in the image. We resized each of the **81 images to be 28x28 pixels**, which made them readable by our neural network. The images were also binarized to contain only white or black pixels. However, when we started testing, we realized that our network **had not been trained to recognize an empty box**. We had indeed omitted the fact that a grid cell could be empty or contain a cluster of white pixels from one of the processing steps. We initially thought of **adding a neuron to the final layer** and retraining the network to detect this type of case. However, after further thought, we realized we could avoid this modification and save time by **simply detecting the number of white pixels in each of the images**. If this number exceeded a certain threshold, it was likely that the box contained a number rather than noise or nothing at all. This process also made the detection faster because **we did not need to identify the detected images as empty in the network**.
 
-
-
-
 During the image processing phase, we had to re-adapt our **approach to reduce the noise created** by the application of successive filters as much as possible. While we managed to remove a significant amount of noise, a small part remained undetectable **without doing a case by case analysis**. However, this represented a very small part and was therefore negligible compared to the amount of noise we were able to remove.
-
-
-
 
 The training process of the network took longer with the addition **of a few hundred extremely noisy images**. Therefore, we created a new launch option that allowed us to load a neural network instance from a text file containing the values of the weights and biases of each link, and to **train the instance created from the previous adjustments**. At the end of the training, a new text file was written with the updated values of the new neural network. This allowed us to continue **training the same neural network in multiple runs, with different test data and a specific number of epochs**.
 
-
-
-
 With all these modifications in place, **we were able to test our neural network on images of Sudoku grids**. The empty cells in the image were perfectly identified and transcribed in the prediction of the final Sudoku grid. Most of the boxes containing numbers were also correctly identified, but **some predictions were sometimes very far from reality**. This was particularly the case for **6s that were often interpreted as 8s or for 4s that were seen as 9s**. To improve the network's detection of these numbers, we simply generated a larger quantity of images containing specifically these numbers and re-trained the neural network.
-
-
-
 
 After several dozen new tests, we were finally able to identify **almost all the digits of the Sudoku grid provided as input**. Using the Sudoku generator, we were able to compare the results of several hundred Sudoku grids with the entire interpretation of the neural network.
 
-
-
-
 Once we were confident in the accuracy our neural network could reach, **we launched a test and training session overnight** to generate a text file containing the weights and biases of the best possible result. **This file is included in our repository and will be used to test some grids during the final presentation of the project**.
-
-
-
 
 We also **cleaned up the code** hierarchy by adding new types of structures, such as a structure for each of the input, hidden, and output layers, containing a new structure for each neuron with a value and a list of links to the rest of the nodes. This allowed us to **avoid working with large arrays and potentially add multiple hidden intermediate layers if necessary**. Our neural network only used one hidden layer, but we could have added another without significantly impacting its performance.
 
-
-
-
-One potential improvement that we considered but did not implement was the use of a different activation function: **the softmax function**. It is often used in machine learning to predict the probability of an event and in classification models, where it allows predicting the probability of belonging to each possible class. The softmax function is an extension of the **sigmoid activation function**, which is typically used **for binary classification case****s**.
+One potential improvement that we considered but did not implement was the use of a different activation function: **the softmax function**. It is often used in machine learning to predict the probability of an event and in classification models, where it allows predicting the probability of belonging to each possible class. The softmax function is an extension of the **sigmoid activation function**, which is typically used **for binary classification case\*\***s\*\*.
 
 ![Softmax graph](/assets/neural-network/softmax.png)

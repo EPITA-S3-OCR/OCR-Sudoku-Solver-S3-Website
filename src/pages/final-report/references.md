@@ -1,8 +1,7 @@
 ---
 layout: "@layouts/BlogLayout.astro"
+title: "References"
 ---
-
-# References
 
 ## Image processing
 
@@ -33,9 +32,7 @@ layout: "@layouts/BlogLayout.astro"
 - [3Blue1Brown “Neural Networks”](https://www.youtube.com/watch?v=aircAruvnKk&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi) (youtube video)
 - [Neural networks and deep learning](http://neuralnetworksanddeeplearning.com/) (neuralnetworksanddeeplearning.com)
 
-
 ### UI
-
 
 - [MagickWand](https://imagemagick.org/api/MagickWand/index.html)
 - [ImageMagick](https://imagemagick.org/)
@@ -43,5 +40,3 @@ layout: "@layouts/BlogLayout.astro"
 - [Figma](https://www.figma.com/)
 - [Glade](https://glade.gnome.org/)
 - [GTK3.0 Documentation](https://docs.gtk.org/gtk3/)
-
-

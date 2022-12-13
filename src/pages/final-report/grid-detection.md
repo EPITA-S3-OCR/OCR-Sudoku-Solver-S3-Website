@@ -1,9 +1,7 @@
 ---
 layout: "@layouts/BlogLayout.astro"
-order: 1
+title: "Grid detection"
 ---
-
-# Grid detection
 
 ## Hough transform
 
@@ -20,7 +18,7 @@ We then loop in the polar coordinates matrix to get the maximum value, which is 
 Once we have the maximum value, we can trace and store all lines that are **at least of the value that is half of the maximum in the polar matrix**. Since this technique can produce a very large amount of lines, we reduced it by checking, when adding a new line, if there is one that is already approximately **placed at the same position in the list of all other lines**.
 
 <figure>
-  <div class="grid grid-cols-2 items-center gap-8">
+  <div class="grid md:grid-cols-2 items-center gap-8">
     <img src="/assets/image-processing/accumulator.jpg" alt="File loading">
     <img src="/assets/image-processing/6-lines.jpg" alt="File loading">
   </div>
@@ -46,46 +44,64 @@ At this point, we have a starting point $(x,y)$ and two distances **ready for th
 
 ![Squares detected on the example image](/assets/image-processing/9-draw_squares.jpg)
 
-
-
 ## Improvements
 
 After the first defense of the project, we modified, or at least optimized, a **major part of our image processing**.
 
-\vspace{\baselineskip}
-
 First of all, we made several improvements to our image processing algorithm. One of the key changes we made was the method we used for **calculating the noise level** in an image. Previously, we were using the following simple algorithm that would count the numbers of pixels which value was above a specific threshold.
 
-![Previous noise detection calculation](/assets/image-processing/c_code_one.PNG)
+```c
+// Calculate the noise level in the image
+int noise_level = 0;
+for (int i = 0; i < image_width * image_height; i++) {
+  if (image[i] > threshold) {
+    noise_level++;
+  }
+}
+```
 
 However, this method was **not very accurate** and often resulted in noisy images. To improve this, we decided to use **standard deviation** as a measure of the noise level in the image. Standard deviation is a statistical measure that indicates how much the values in a data set vary from the mean (average) value. We can calculate the standard deviation of a data set using the following formula: $\sigma = \sqrt{\frac{\sum_{i=1}^{n} (x_i - \mu)^2}{n}}$ where $\sigma$ is the standard deviation, $x_i$ is the $i^{th}$ value in the data set, $\mu$ is the mean value, and $n$ is the total number of values in the data set.
 
-
-![Noise calculation with standard deviation](/assets/image-processing/c_code_two.PNG)
+```c
+// Calculate the standard deviation of the pixel values in the image
+int sum = 0;
+int n = image_width * image_height;
+for (int i = 0; i < n; i++) {
+  sum += image[i];
+}
+float mean = (float) sum / n;
+float variance = 0;
+for (int i = 0; i < n; i++) {
+  variance += (image[i] - mean) * (image[i] - mean);
+}
+variance /= n;
+float std_dev = sqrt(variance);
+```
 
 We were able to use the calculated standard deviation for each image **as a measure of noise level**. This allowed us to adjust the thresholds for **adaptive thresholding** more accurately and link this to noise detection and removal, resulting in clearer and **less noisy images**.
 
-
 In addition to this, we also made improvements to the **line detection process**. This is a computationally intensive process, so we wanted to find ways to reduce the amount of time it would take. One of the ways we did this was by finding lines in the image that were not relevant to the grid we were trying to detect and removing these lines from the image **before launching the square detection algorithm**. This can be done using the following code:
 
-![](/assets/image-processing/c_code_three.PNG)
+```c
+// Remove irrelevant lines from the image
+int num_relevant_lines = 0;
+for (int i = 0; i < num_lines; i++) {
+  // Check if the line is relevant to the grid we are trying to detect
+  if (is_relevant(lines[i], grid)) {
+    relevant_lines[num_relevant_lines++] = lines[i];
+  }
+}
+```
 
 ![Line cleaning](/assets/image-processing/draw-lines.jpg)
 
 Finally, we improved **the way the grid was detected**. In the previous version of our algorithm, we used **the coordinates of a line of maximum value** to detect the top left square of the sudoku grid. This approach worked well for some images, but not for others. In particular, it did not work well **for images that contained straight lines external to the sudoku grid**, as these lines could be interpreted as being part of the grid, resulting in incorrect detection of the grid and incorrect separation of its squares.
 
-
 To address this issue, we have implemented a new version of the algorithm. In this version, we first detect the intersection point of the maximum coordinate lines towards the top of the image, as before. Then, we test whether there is another intersection point **of similar concentration** below the original point. This process is repeated until the algorithm no longer detects points that satisfy the conditions for continuing the loop. In parallel to this **"proximity descent"**, we keep track of the number of descents using a counter. The algorithm stops once the **maximum number of lines allowed in the sudoku grid is reached** (i.e. 9 or 16). If the algorithm does not detect enough (or too many) descents, **we conclude that the starting point was incorrect**, and the image processing is on the wrong track. We thus might choose another starting point and start again.
-
-
 
 In some cases, the sudoku grid in the image may be too off-center or distorted by perspective, making it difficult to detect a pattern vertically using our new optimization. In such cases, we have made the algorithm start from the base point and **follow the same path but horizontally this time**. If neither of these two paths is able to detect a pattern, we can be sure that the image is not a sudoku, or is **too noisy to be processed**.
 
-
 ![Grid detection improvement](/assets/image-processing/10-draw_sudoku.jpg)
-
-
-
 
 ## Image splitting
 
