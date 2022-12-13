@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['neural_5fnetwork_2ec_111',['neural_network.c',['../neural__network_8c.html',1,'']]],
+  ['neural_5fnetwork_2eh_112',['neural_network.h',['../neural__network_8h.html',1,'']]],
+  ['neuralnetworkcompute_113',['neuralNetworkCompute',['../neural__network_8c.html#aa629579499e9aa80192a4f822ae08fa7',1,'neural_network.c']]],
+  ['neuralnetworkfree_114',['neuralNetworkFree',['../neural__network_8c.html#a25d2286f5978e3c243d27a967fa39dd3',1,'neural_network.c']]],
+  ['neuralnetworkinit_115',['neuralNetworkInit',['../neural__network_8c.html#ac68fd974934b1ec93facfa9aa3daa4b0',1,'neural_network.c']]],
+  ['neuralnetworkloadocr_116',['neuralNetworkLoadOCR',['../neural__network_8c.html#a27e7a0362dc1bef42daaef7329ee10ca',1,'neural_network.c']]],
+  ['neuralnetworkprintassertocr_117',['neuralNetworkPrintAssertOCR',['../neural__network_8c.html#adfa422dcb4ed8f28e643b3bf0a5544b0',1,'neural_network.c']]],
+  ['neuralnetworkprintresults_118',['neuralNetworkPrintResults',['../neural__network_8c.html#ac71a2547945f250a6bf65d98f5cced2f',1,'neural_network.c']]],
+  ['neuralnetworksaveocr_119',['neuralNetworkSaveOCR',['../neural__network_8c.html#aec7e7d4ce4527b808bbc8fda4c2a638b',1,'neural_network.c']]],
+  ['neuralnetworktrain_120',['neuralNetworkTrain',['../neural__network_8c.html#a99a2550f1e220ac022c2f03fb0d59d8c',1,'neural_network.c']]],
+  ['next_121',['next',['../structlist.html#a1900fe79e875e2838625b2eb60837f8f',1,'list']]],
+  ['nn_122',['NN',['../user-interface_2main_8h.html#adee4dd631f3b5ffdee33de48d268394a',1,'NN():&#160;main.h'],['../structNN.html',1,'NN']]],
+  ['nn_123',['nn',['../structUserInterface.html#add636f1a233648ad98488d71f7748414',1,'UserInterface']]],
+  ['noise_5freduction_2ec_124',['noise_reduction.c',['../noise__reduction_8c.html',1,'']]],
+  ['noise_5freduction_2eh_125',['noise_reduction.h',['../noise__reduction_8h.html',1,'']]],
+  ['normalsudokuradio_126',['normalSudokuRadio',['../structSolver.html#a31f1cbbe77d533206b5001abd38fb725',1,'Solver']]]
+];

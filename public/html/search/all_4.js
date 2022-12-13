@@ -1,0 +1,14 @@
+var searchData=
+[
+  ['data_25',['data',['../structlist.html#a4dd0faa217d821a9dcf26c70d8164d5c',1,'list']]],
+  ['degreestoradians_26',['degreesToRadians',['../image-processing_2utils_2utils_8c.html#a8824538eb07749fa64fd2ef98e557be9',1,'degreesToRadians(double degrees):&#160;utils.c'],['../image-processing_2utils_2utils_8h.html#a8824538eb07749fa64fd2ef98e557be9',1,'degreesToRadians(double degrees):&#160;utils.c']]],
+  ['denoise_27',['denoise',['../noise__reduction_8c.html#abdb5d47db7a2d77331fe309d80397dd0',1,'denoise(SDL_Surface *surface):&#160;noise_reduction.c'],['../noise__reduction_8h.html#abdb5d47db7a2d77331fe309d80397dd0',1,'denoise(SDL_Surface *surface):&#160;noise_reduction.c']]],
+  ['descent_28',['descent',['../neural__network_8c.html#a30f93224592a0a7533da1727b22362bc',1,'neural_network.c']]],
+  ['displayimage_29',['displayImage',['../user-interface_2utils_8c.html#a9e785d65b9b5426d8e1d2005131e66e8',1,'displayImage(UserInterface *ui, cairo_surface_t *surface):&#160;utils.c'],['../user-interface_2utils_8h.html#a9e785d65b9b5426d8e1d2005131e66e8',1,'displayImage(UserInterface *ui, cairo_surface_t *surface):&#160;utils.c']]],
+  ['drawline_30',['drawLine',['../lines_8h.html#a002a76b389c69dba264833e311af2f06',1,'drawLine(SDL_Surface *surface, int xStart, int yStart, int xEnd, int yEnd, SDL_Color color, int width):&#160;lines.c'],['../lines_8c.html#a002a76b389c69dba264833e311af2f06',1,'drawLine(SDL_Surface *surface, int xStart, int yStart, int xEnd, int yEnd, SDL_Color color, int width):&#160;lines.c']]],
+  ['drawlines_31',['drawLines',['../lines_8c.html#a4fb75193ad219b3f58f2ffb117f8ba5f',1,'drawLines(SDL_Surface *surface, List *lines, SDL_Color color, int width):&#160;lines.c'],['../lines_8h.html#a4fb75193ad219b3f58f2ffb117f8ba5f',1,'drawLines(SDL_Surface *surface, List *lines, SDL_Color color, int width):&#160;lines.c']]],
+  ['drawsquare_32',['drawSquare',['../lines_8c.html#aad297701525b9105e16fb95850316177',1,'drawSquare(SDL_Surface *surface, SudokuCell *cell, SDL_Color color, int width):&#160;lines.c'],['../lines_8h.html#aad297701525b9105e16fb95850316177',1,'drawSquare(SDL_Surface *surface, SudokuCell *cell, SDL_Color color, int width):&#160;lines.c']]],
+  ['drawsquares_33',['drawSquares',['../lines_8c.html#abe31260d56d082c95177a38811074060',1,'drawSquares(SDL_Surface *surface, List *squares, SDL_Color color):&#160;lines.c'],['../lines_8h.html#abe31260d56d082c95177a38811074060',1,'drawSquares(SDL_Surface *surface, List *squares, SDL_Color color):&#160;lines.c']]],
+  ['duplicate_5fsurface_34',['duplicate_surface',['../user-interface_2utils_8c.html#ab358f218185b1528f3ab889519a795c1',1,'duplicate_surface(cairo_surface_t *original):&#160;utils.c'],['../user-interface_2utils_8h.html#ab358f218185b1528f3ab889519a795c1',1,'duplicate_surface(cairo_surface_t *original):&#160;utils.c']]],
+  ['duplicatefile_35',['duplicateFile',['../handler_8c.html#a1878d32c867abcac82cc31232d014c14',1,'handler.c']]]
+];
