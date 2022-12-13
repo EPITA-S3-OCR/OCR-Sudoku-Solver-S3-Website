@@ -2,7 +2,7 @@
 layout: "@layouts/BlogLayoutFinal.astro"
 ---
 
-# XOR Neural Network
+# Neural Network
 
 ## Introduction
 
