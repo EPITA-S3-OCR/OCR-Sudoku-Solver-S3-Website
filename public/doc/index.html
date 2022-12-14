@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>OCR Sudoku Solver: Main Page</title>
+<title>OCR Sudoku Solver: OCR Sudoku Solver (2026, S3 Project)</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -91,10 +91,62 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">OCR Sudoku Solver Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title"><a class="el" href="d1/d8b/struct_o_c_r.html" title="The Structure for the OCR section in the UI.">OCR</a> Sudoku <a class="el" href="dd/dbf/struct_solver.html" title="The Structure of the Solver Section in the UI.">Solver</a> (2026, S3 Project) </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p ><a class="anchor" id="md_README"></a> <a class="el" href="d1/d8b/struct_o_c_r.html" title="The Structure for the OCR section in the UI.">OCR</a> software that outputs a solved grid of sudoku from an image of an unsolved one using image splitting and character recognition (IA).</p>
+<blockquote class="doxtable">
+<p >&zwj;<a href="rapport_1.pdf">First report</a> </p>
+</blockquote>
+<blockquote class="doxtable">
+<p >&zwj;<a href="rapport_2.pdf">Final report</a> </p>
+</blockquote>
+<p><b>Team members:</b> <br  />
+ • Eliott FLECHTNER <br  />
+ • Titouan VERHILLE <br  />
+ • Raj Sunil MAHAJAN AKA MALI <br  />
+ • David Ortiz CALDERON</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+How to use</h1>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Librairies</h2>
+<p >You need to install the following librairies:</p>
+<ul>
+<li><a href="https://wiki.libsdl.org/SDL2/Installation">SDL2</a></li>
+<li><a href="https://wiki.libsdl.org/SDL_image/FrontPage">SDL2_image</a></li>
+<li><a href="https://www.gtk.org/docs/installations/linux">GTK3</a></li>
+<li><a href="https://imagemagick.org/script/install-source.php">ImageMagick</a></li>
+</ul>
+<p >For example on Linux Debian-based distros install those with :</p>
+<div class="fragment"><div class="line">sudo apt-get install libsdl2-dev libsdl2-image-dev libgtk-3-dev libmagickwand-dev</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
+Compilation</h2>
+<p >To compile the project, you need to run the following command:</p>
+<div class="fragment"><div class="line">make # To compile the project</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
+Execution</h2>
+<p >To execute the project, you need to run the following command:</p>
+<div class="fragment"><div class="line">./main ui # Will launch a user interface</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
+Cleaning</h2>
+<p >To clean the project, you need to run the following command:</p>
+<div class="fragment"><div class="line"># To clean the project</div>
+<div class="line">make clean</div>
+<div class="line"># To clean the output folder</div>
+<div class="line">make clean-output</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
+Create documentation</h2>
+<p >You will need the doxygen package to create the documentation.</p>
+<p >For example on Linux Debian-based distros install those with :</p>
+<div class="fragment"><div class="line">sudo apt-get install doxygen</div>
+</div><!-- fragment --><p >To create the documentation, you need to run the following command:</p>
+<div class="fragment"><div class="line"># To create the documentation</div>
+<div class="line">make doc</div>
+<div class="line"># To clean the documentation</div>
+<div class="line">make clean-doc</div>
+</div><!-- fragment --><p >Open the <a href="doc/html/index.html"><code>doc/html/index.html</code></a> file in your browser to see the documentation. </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

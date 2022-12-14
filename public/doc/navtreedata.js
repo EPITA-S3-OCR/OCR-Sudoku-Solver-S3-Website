@@ -25,13 +25,13 @@
 var NAVTREE =
 [
   [ "OCR Sudoku Solver", "index.html", [
-    [ "OCR Sudoku Solver (2026, S3 Project)", "md__r_e_a_d_m_e.html", [
-      [ "How to use", "md__r_e_a_d_m_e.html#autotoc_md1", [
-        [ "Librairies", "md__r_e_a_d_m_e.html#autotoc_md2", null ],
-        [ "Compilation", "md__r_e_a_d_m_e.html#autotoc_md3", null ],
-        [ "Execution", "md__r_e_a_d_m_e.html#autotoc_md4", null ],
-        [ "Cleaning", "md__r_e_a_d_m_e.html#autotoc_md5", null ],
-        [ "Create documentation", "md__r_e_a_d_m_e.html#autotoc_md6", null ]
+    [ "OCR Sudoku Solver (2026, S3 Project)", "index.html", [
+      [ "How to use", "index.html#autotoc_md1", [
+        [ "Librairies", "index.html#autotoc_md2", null ],
+        [ "Compilation", "index.html#autotoc_md3", null ],
+        [ "Execution", "index.html#autotoc_md4", null ],
+        [ "Cleaning", "index.html#autotoc_md5", null ],
+        [ "Create documentation", "index.html#autotoc_md6", null ]
       ] ]
     ] ],
     [ "Data Structures", "annotated.html", [
@@ -58,7 +58,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"neural__network_8c.html#a91738ef42414bcd37c9e3ab1c3af35a4"
+"d9/d70/image-processing_2utils_2utils_8c.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
