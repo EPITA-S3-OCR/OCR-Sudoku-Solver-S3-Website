@@ -13,6 +13,6 @@ export const orderPostFinal = [
   "grid-detection",
   "solver",
   "neural-network",
-  "references",
   "user-interface",
+  "references",
 ];

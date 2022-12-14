@@ -1,8 +1,7 @@
 ---
 layout: "@layouts/BlogLayout.astro"
+title: "Grid detection"
 ---
-
-# Grid detection
 
 ## Hough transform
 

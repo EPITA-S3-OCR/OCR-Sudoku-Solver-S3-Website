@@ -1,8 +1,7 @@
 ---
 layout: "@layouts/BlogLayout.astro"
+title: "Group presentation & motivations"
 ---
-
-# Group presentation & motivations
 
 ## Group members
 

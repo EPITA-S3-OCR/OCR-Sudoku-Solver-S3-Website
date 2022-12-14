@@ -1,8 +1,7 @@
 ---
 layout: "@layouts/BlogLayout.astro"
+title: "Solver"
 ---
-
-# Solver
 
 ## Backtracking algorithms
 

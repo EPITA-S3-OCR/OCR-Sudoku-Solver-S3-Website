@@ -70,7 +70,7 @@ if (report === "first-report") {
                     href={post.url}
                     class="font-bold transition-all text-center hover:bg-gray-500 bg-gray-700 rounded p-2 block"
                   >
-                    {post.getHeadings()[0].text}
+                    {post.frontmatter.title}
                   </a>
                 </li>
               ))
@@ -84,10 +84,7 @@ if (report === "first-report") {
     <article
       class="prose-stone md:[&>figure>img]:max-w-[80%] prose-headings:scroll-m-64 prose mx-auto prose-img:mx-auto prose-img:rounded-md prose-figcaption:text-center dark:prose-invert"
     >
-      <div>
-        <h1 class="inline-block">{title}</h1>
-        <span class="inline-block">{minutesRead}</span>
-      </div>
+      <h1>{title}</h1>
       <slot />
     </article>
     <div
@@ -95,7 +92,11 @@ if (report === "first-report") {
       class="hidden lg:block absolute top-4 right-0 bottom-0"
     >
       <div id="left-sidebar" class="self-start sticky top-16">
-        <TOC client:media="(min-width: 768px)" headings={headings} />
+        <TOC
+          client:media="(min-width: 768px)"
+          time={minutesRead}
+          headings={headings}
+        />
       </div>
     </div>
     <div class="fixed bottom-8 left-8">

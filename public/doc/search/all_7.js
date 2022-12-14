@@ -1,0 +1,16 @@
+var searchData=
+[
+  ['generatefinalsudokugrid_0',['generateFinalSudokuGrid',['../thread_8c.html#a3accb463969514b6c4f4d56939176db3',1,'thread.c']]],
+  ['getangle_1',['getAngle',['../lines_8c.html#ab57806f01866ccf8b784b81bdd108e11',1,'getAngle(Line *l):&#160;lines.c'],['../lines_8h.html#ab57806f01866ccf8b784b81bdd108e11',1,'getAngle(Line *l):&#160;lines.c']]],
+  ['getbinarystring_2',['getBinaryString',['../helpers_8c.html#a3dcc9e2a24ec0fbc60b403ad216134aa',1,'helpers.c']]],
+  ['getdecimalint_3',['getDecimalInt',['../helpers_8c.html#afe789a398c8384e1c97c36ddd0787799',1,'helpers.c']]],
+  ['getintersection_4',['getIntersection',['../lines_8c.html#ade4adb588f1903b769ea85c8835f9153',1,'getIntersection(Line l1, Line l2, int *x, int *y, int width, int height):&#160;lines.c'],['../lines_8h.html#ade4adb588f1903b769ea85c8835f9153',1,'getIntersection(Line l1, Line l2, int *x, int *y, int width, int height):&#160;lines.c']]],
+  ['getmediansizesquares_5',['getMedianSizeSquares',['../lines_8c.html#aa6f37e0a8bf409556948c4ebb5f9d9ee',1,'lines.c']]],
+  ['getneighbours_6',['getNeighbours',['../image-processing_2utils_2utils_8c.html#af49ebefb48500d54d5396bd211bb8c20',1,'getNeighbours(SDL_Surface *surface, int x, int y):&#160;utils.c'],['../image-processing_2utils_2utils_8h.html#af49ebefb48500d54d5396bd211bb8c20',1,'getNeighbours(SDL_Surface *surface, int x, int y):&#160;utils.c']]],
+  ['getpixel_7',['getPixel',['../image-processing_2utils_2utils_8c.html#a48c6792c544a90cd7a552667ce5bba4a',1,'getPixel(SDL_Surface *surface, int x, int y):&#160;utils.c'],['../image-processing_2utils_2utils_8h.html#a48c6792c544a90cd7a552667ce5bba4a',1,'getPixel(SDL_Surface *surface, int x, int y):&#160;utils.c']]],
+  ['getred_8',['getRed',['../sobel_8c.html#ad96bdf91e3772be653ecef4b4b6c8f8b',1,'sobel.c']]],
+  ['getrotationangle_9',['getRotationAngle',['../lines_8c.html#afbc4602dc408a4cd6aa1f66c91fc0bc4',1,'getRotationAngle(List *lines):&#160;lines.c'],['../lines_8h.html#afbc4602dc408a4cd6aa1f66c91fc0bc4',1,'getRotationAngle(List *lines):&#160;lines.c']]],
+  ['grayscale_10',['grayscale',['../grayscale_8c.html#af395ca55c2d1cb5bf40dcaa8feee0239',1,'grayscale(SDL_Surface *surface):&#160;grayscale.c'],['../grayscale_8h.html#af395ca55c2d1cb5bf40dcaa8feee0239',1,'grayscale(SDL_Surface *surface):&#160;grayscale.c']]],
+  ['grayscale_2ec_11',['grayscale.c',['../grayscale_8c.html',1,'']]],
+  ['grayscale_2eh_12',['grayscale.h',['../grayscale_8h.html',1,'']]]
+];

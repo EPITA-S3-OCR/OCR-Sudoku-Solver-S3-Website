@@ -1,8 +1,7 @@
 ---
 layout: "@layouts/BlogLayout.astro"
+title: "Grid detection"
 ---
-
-# Image processing
 
 One of the major parts of the project was obviously the processing of the image of the sudoku grid provided by the user when the program is launched. We will therefore present this part **by applying each of the processing functions successively in the chronological order** in which they appear in our code. We will use one of the grid images **provided in the book of specifications** of the project to illustrate our points and to observe more precisely the effects of **each stage of the process**.
 

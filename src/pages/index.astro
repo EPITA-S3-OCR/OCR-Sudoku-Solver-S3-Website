@@ -25,6 +25,7 @@ interface Member {
   description: string;
   github: string;
 }
+
 const teams: Member[] = [
   {
     name: "🦆 Eliott",
@@ -48,14 +49,13 @@ const teams: Member[] = [
   {
     name: "Titouan",
     link: "https://cri.epita.fr/users/titouan.verhille/",
-    description: "Loving GCC for it stability.",
+    description: "Loving C gang for it reliability",
     github: "https://github.com/titouv",
   },
 ];
 ---
 
 <BaseLayout>
-  <!-- <Header /> -->
   <Hero />
   <section class="overflow-hidden py-6 md:py-12 bg-gray-800">
     <div class="max-w-[65ch] mx-4 md:mx-auto sm:grid gap-8 sm:grid-cols-2">
@@ -86,7 +86,7 @@ const teams: Member[] = [
       </ul>
     </div>
   </section>
-  <section class="overflow-hidden px-4">
+  <section class="overflow-hidden mb-25 px-4">
     <div class="max-w-[65ch] mx-auto py-12">
       <div class="mx-auto">
         <div class="flex items-end justify-between">
@@ -110,7 +110,7 @@ const teams: Member[] = [
                   href={post.url}
                   class="font-bold transition-all text-center hover:bg-gray-500 bg-gray-700 rounded p-2 block"
                 >
-                  {post.getHeadings()[0].text}
+                  {post.frontmatter.title}
                 </a>
               </li>
             ))
@@ -144,7 +144,7 @@ const teams: Member[] = [
                   href={post.url}
                   class="font-bold transition-all text-center hover:bg-gray-500 bg-gray-700 rounded p-2 block"
                 >
-                  {post.getHeadings()[0].text}
+                  {post.frontmatter.title}
                 </a>
               </li>
             ))
@@ -153,9 +153,4 @@ const teams: Member[] = [
       </div>
     </div>
   </section>
-  <div class="text-center">
-    <a class="font-bold px-10 py-10 hover:bg-gray-500 bg-gray-700 rounded">
-      Test</a
-    >
-  </div>
 </BaseLayout>

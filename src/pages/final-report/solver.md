@@ -73,9 +73,9 @@ The final solved sudoku grid is then a reduced matrix with a set of rows that so
 
 After having a way to solve the sudoku itself, another important part **is how this puzzle will be loaded**. For that, the chosen architecture was to have an examples and results directory.
 
-<figure> 
-  <div class="grid grid-cols-3 gap-4 place-items-center justify-center">
-    <img src="/assets/solver/16unsolved.png" alt="File loading">
+<figure>
+  <div class="flex justify-center">
+    <img src="/assets/solver/16x16unsolved.png" alt="File loading">
     <img src="/assets/solver/architecture.png" alt="File loading">
     <img src="/assets/solver/3x3solved.png" alt="File loading">
   </div>
@@ -106,39 +106,7 @@ Second, Algorithm X uses the concept of **exact cover to determine which moves t
 
 In our main function only taking a 2D-grid representation of the Sudoku grid, we first initialized an array called "subsets" that would **store the rows, columns, and 3x3 sub-grids in the Sudoku puzzle**. We then filled this array with the values from the grid, so that each element in the array represented a cell in the corresponding row, column, or sub-grid. Next, we created an array called "choices" that would store the **possible numbers for each cell in the grid**. This array was initialized with the possible numbers for each empty cell, and with the number in the cell for non-empty cells. Finally, we called the recursive function "solveRecAlgoX()" that would implement Knuth's algorithm to find a solution to the Sudoku puzzle. This function took two arguments: the "subsets" array and the "choices" array. The function returned 1 if a solution was found, and 0 otherwise. It used recursion to find the exact cover of the Sudoku grid:
 
-```c
-{
-  // Initialization of the subsets array
-  ... snip ...
-
-  // Create an array to store the choices for each cell in the grid
-  int choices[9][9][9];
-
-  // Initialize the array with the possible numbers for each cell
-  for (int i = 0; i < 9; i++)
-  {
-    for (int j = 0; j < 9; j++)
-    {
-      if (grid[i][j] == 0)
-      {
-        // If the cell is empty, add all possible numbers to the choices array
-        for (int k = 0; k < 9; k++)
-        {
-          choices[i][j][k] = k + 1;
-        }
-      }
-      else
-      {
-        // If the cell is not empty, add only the number in the cell to the choices array
-        choices[i][j][0] = grid[i][j];
-      }
-    }
-  }
-
-  // Call the recursive function to find a solution using Algorithm X
-  return solveRecAlgoX(subsets, choices);
-}
-```
+![](/assets/solver/algo_x_one.png)
 
 First, it found the cell **with the fewest number of choices using the "findEmptyCell()" function** which took the Sudoku grid as an argument and searched for the first empty cell in the grid (i.e., a cell with a value of 0 in the subsets array) and **stored its row and column indices in the provided variables**. This function returned 1 if an empty cell was found, and 0 otherwise,
 
@@ -150,20 +118,7 @@ In the context of Sudoku, dancing links can be used to improve the implementatio
 
 Dancing links are a technique for efficiently **representing and manipulating sets of subsets, such as the rows, columns, and 3x3 sub-grids in a Sudoku puzzle**. The basic idea is to represent each subset as a linked list of nodes, where each node corresponds to an element in the universe. The nodes are linked together in a circular fashion, so that each node has a "left" and "right" neighbor, as well as an "up" and "down" neighbor. This representation is called a "**doubly-linked circular list**."
 
-```c
-struct Node {
-    int value; // corresponds to an element in the universe
-    struct Node *left;
-    struct Node *right;
-    struct Node *up;
-    struct Node *down;
-};
-
-struct List {
-    struct Node *first;
-    struct Node *last;
-};
-```
+![Node struct](/assets/solver/node_struct.png)
 
 ![Circular doubly linked-list representation](/assets/solver/doublylinked.png)
 
@@ -173,39 +128,7 @@ We therefore modified the function : we first **initialize an array of 27 doubly
 
 The code for this function looked like this :
 
-```c
-int solveRecAlgoXDancingLinks(int subsets[27][9], int choices[9][9][9])
-{
-  // Check if there are any empty cells in the grid
-  ... snip ...
-
-  // Choose the cell with the fewest number of choices
-  ... snip ...
-
-  // Try all possible numbers in the chosen cell
-  for (int k = 0; k < 9; k++)
-  {
-    int num = choices[row][col][k];
-    if (num != 0)
-    {
-      // Check if the move is valid
-      if (is_valid_move(subsets, row, col, num))
-      {
-        // If the move is valid, make the move and recursively call the function
-        subsets[row][col] = num;
-        choices[row][col][k] = 0;
-        if (solveRecAlgoXDancingLinks(subsets, choices)) return 1;
-
-        // If the recursive call returns 0, backtrack and try a different number
-        subsets[row][col] = 0;
-        choices[row][col][k] = num;
-      }
-    }
-  }
-  // If none of the numbers work, there is no solution
-  return 0;
-}
-```
+![](/assets/solver/dancing_links.png)
 
 First, it was finding the cell with the fewest number of choices using the "findEmptyCell()" function, which we have already explained (i.e., a cell with a NULL value in the subset lists).
 
@@ -215,34 +138,7 @@ Once we have found it, we iterate over the doubly-linked circular list of choice
 
 As we said earlier, in the context of Algorithm X applied to solving Sudoku puzzles, MRV stands for "Minimum Remaining Values". This optimization is **a heuristic that can be used to improve the performance of the algorithm**. The basic idea behind MRV is to prioritize the cells with the fewest remaining possible values when making recursive calls. This is based **on the observation that cells with a small number of remaining values are more likely to lead to a solution**, and therefore should be explored first. By prioritizing these cells, we can reduce the number of recursive calls and improve the overall performance of the algorithm. To implement the MRV heuristic in the Algorithm X implementation, we did not modify the main function **but rather the recursive function** we had designed for the Dancing Links implementation, now renaming it "solveRecAlgoX_MRV()" function.
 
-```c
-int solveRecAlgoX_MRV(int subsets[27][9], int choices[9][9][9])
-{
-  // Check if there are any empty cells in the grid & choose the cell with the fewest number of choices
-  ... snip ...
-
-  // Try all possible numbers in the chosen cell
-  Node *node = subset_lists[row + 18][col];
-  while (node != NULL)
-  {
-    // Check if the move is valid
-    if (is_valid_move(subset_lists, row, col, node->value))
-    {
-      // If the move is valid, make the move and recursively call the function
-      cover_row(subset_lists, row);
-      cover_column(subset_lists, col);
-      if (solveRecAlgoX_using_dancing_links(subset_lists)) return 1;
-      // If the recursive call returns 0, backtrack and try a different number
-      uncover_row(subset_lists, row);
-      uncover_column(subset_lists, col);
-    }
-    // Move to the next choice in the list
-    node = node->right;
-  }
-  // If none of the numbers work, there is no solution
-  return 0;
-}
-```
+![](/assets/solver/mvr.png)
 
 This time, we are not interested **in finding the next empty cell but rather finding the cell with the fewest number of remaining choices using the MRV heuristic**. This is done by iterating over all the empty cells in the grid and counting the number of remaining choices for each cell. The cell with the **fewest number of remaining choices** is then selected as the next cell to be considered in the search for a solution.
 

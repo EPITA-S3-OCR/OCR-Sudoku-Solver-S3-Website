@@ -6,9 +6,13 @@ import { useState, useEffect, useRef } from "preact/hooks";
 
 interface Props {
   headings: { depth: number; slug: string; text: string }[];
+  time: string;
 }
 
-const TableOfContents: FunctionalComponent<Props> = ({ headings = [] }) => {
+const TableOfContents: FunctionalComponent<Props> = ({
+  time,
+  headings = [],
+}) => {
   headings = headings.filter(({ depth }) => depth > 1 && depth < 4);
 
   const toc = useRef<HTMLUListElement>();
@@ -69,6 +73,7 @@ const TableOfContents: FunctionalComponent<Props> = ({ headings = [] }) => {
         <h2 class="text-2xl font-bold" id={onThisPageID}>
           Table of Contents
         </h2>
+        <span>{time}</span>
       </div>
       <ul ref={toc} class="max-w-[30ch]">
         {headings.map(({ depth, slug, text }) => {
