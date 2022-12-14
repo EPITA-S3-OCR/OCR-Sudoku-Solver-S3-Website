@@ -1,8 +1,6 @@
 import { unescape } from "html-escaper";
 import type { FunctionalComponent } from "preact";
 import { useState, useEffect, useRef } from "preact/hooks";
-// import { HTMLAttributes } from "preact/types";
-// import { HTMLAttributes } from "astro/types";
 
 interface Props {
   headings: { depth: number; slug: string; text: string }[];
@@ -63,12 +61,9 @@ const TableOfContents: FunctionalComponent<Props> = ({
       behavior: "smooth",
       block: "start",
     });
-    // update currentID
-    // setCurrentID(e.target.getAttribute("href").replace("#", ""));
   };
   return (
-    // <div className="hidden rounded-md lg:block  bg-gray-800 p-4 mr-4">
-    <div className="block rounded-md   p-4 mr-4">
+    <div className="mr-4 block   rounded-md p-4">
       <div className="pb-4">
         <h2 class="text-2xl font-bold" id={onThisPageID}>
           Table of Contents
@@ -78,17 +73,10 @@ const TableOfContents: FunctionalComponent<Props> = ({
       <ul ref={toc} class="max-w-[30ch]">
         {headings.map(({ depth, slug, text }) => {
           return (
-            // <li
-            //   class={`px-4 border-l-4 list-none list-outside p-0 header-link ${
-            //     currentID === slug
-            //       ? "bg-primary-900 border-primary-500"
-            //       : "border-primary-800"
-            //   }`.trim()}
-            // >
             <li
-              class={`px-4 border-l-4 list-none list-outside p-0 header-link ${
+              class={`header-link list-outside list-none border-l-4 p-0 px-4 ${
                 currentID === slug
-                  ? "bg-gray-800 border-gray-50"
+                  ? "border-gray-50 bg-gray-800"
                   : "border-gray-800"
               }`.trim()}
             >

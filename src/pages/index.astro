@@ -1,7 +1,6 @@
 ---
 import { Icon } from "astro-icon";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import Header from "@components/Header.astro";
 import Hero from "@components/Hero.astro";
 import { orderPost, orderPostFinal } from "src/order";
 
@@ -57,14 +56,12 @@ const teams: Member[] = [
 
 <BaseLayout>
   <Hero />
-  <section class="overflow-hidden py-6 md:py-12 bg-gray-800">
-    <div class="max-w-[65ch] mx-4 md:mx-auto sm:grid gap-8 sm:grid-cols-2">
+  <section class="overflow-hidden bg-gray-800 py-6 md:py-12">
+    <div class="mx-4 max-w-[65ch] gap-8 sm:grid sm:grid-cols-2 md:mx-auto">
       <div class="">
         <div class="mx-auto max-w-xl pb-4 md:p-0">
           <Icon name="ph:users-four" width={48} height={48} />
-          <h2
-            class="text-3xl md:text-4xl pb-2 font-bold text-gray-900 dark:text-white"
-          >
+          <h2 class="pb-2 text-3xl font-bold text-white md:text-4xl">
             The Team
           </h2>
           <p class="pb-4 text-white">
@@ -72,7 +69,7 @@ const teams: Member[] = [
           </p>
         </div>
       </div>
-      <ul class="list-inside flex flex-col gap-4">
+      <ul class="flex list-inside flex-col gap-4">
         {
           teams.map((member) => (
             <li>
@@ -80,7 +77,7 @@ const teams: Member[] = [
                 rel="noopener noreferrer"
                 target="_blank"
                 href={member.github}
-                class="font-bold underline underline-offset-2 pr-1"
+                class="pr-1 font-bold underline underline-offset-2"
               >
                 {member.name}
               </a>
@@ -91,31 +88,29 @@ const teams: Member[] = [
       </ul>
     </div>
   </section>
-  <section class="overflow-hidden mb-25 px-4">
-    <div class="max-w-[65ch] mx-auto py-12">
+  <section class="mb-25 overflow-hidden px-4">
+    <div class="mx-auto max-w-[65ch] py-12">
       <div class="mx-auto">
         <div class="flex items-end justify-between">
           <div>
-            <h2 class="text-3xl inline font-bold text-gray-900 dark:text-white">
-              First Report
-            </h2>
+            <h2 class="inline text-3xl font-bold text-white">First Report</h2>
             <p class="inline text-sm slashed-zero">30/10/2022</p>
           </div>
           <a
             rel="noopener noreferrer"
             target="_blank"
             href="/doc/rapport_1.pdf"
-            class="bg-gray-50 px-2 py-1 rounded-sm font-semibold text-black hover:bg-gray-300"
+            class="rounded-sm bg-gray-50 px-2 py-1 font-semibold text-black hover:bg-gray-300"
             >PDF</a
           >
         </div>
-        <ul class="mt-4 flex flex-wrap w-full gap-4">
+        <ul class="mt-4 flex w-full flex-wrap gap-4">
           {
             posts.map((post) => (
               <li class="grow">
                 <a
                   href={post.url}
-                  class="font-bold transition-all text-center hover:bg-gray-500 bg-gray-700 rounded p-2 block"
+                  class="block rounded bg-gray-700 p-2 text-center font-bold transition-all hover:bg-gray-500"
                 >
                   {post.frontmatter.title}
                 </a>
@@ -127,31 +122,29 @@ const teams: Member[] = [
     </div>
   </section>
 
-  <section class="overflow-hidden mb-32 px-4">
-    <div class="max-w-[65ch] mx-auto py-12">
+  <section class="mb-32 overflow-hidden px-4">
+    <div class="mx-auto max-w-[65ch] py-12">
       <div class="mx-auto">
         <div class="flex items-end justify-between">
           <div>
-            <h2 class="text-3xl inline font-bold text-gray-900 dark:text-white">
-              Final Report
-            </h2>
+            <h2 class="inline text-3xl font-bold text-white">Final Report</h2>
             <p class="inline text-sm slashed-zero">11/12/2022</p>
           </div>
           <a
             rel="noopener noreferrer"
             target="_blank"
             href="/doc/rapport_2.pdf"
-            class="bg-gray-50 px-2 py-1 rounded-sm font-semibold text-black hover:bg-gray-300"
+            class="rounded-sm bg-gray-50 px-2 py-1 font-semibold text-black hover:bg-gray-300"
             >PDF</a
           >
         </div>
-        <ul class="mt-4 flex flex-wrap w-full gap-4">
+        <ul class="mt-4 flex w-full flex-wrap gap-4">
           {
             postsFinal.map((post) => (
               <li class="grow">
                 <a
                   href={post.url}
-                  class="font-bold transition-all text-center hover:bg-gray-500 bg-gray-700 rounded p-2 block"
+                  class="block rounded bg-gray-700 p-2 text-center font-bold transition-all hover:bg-gray-500"
                 >
                   {post.frontmatter.title}
                 </a>

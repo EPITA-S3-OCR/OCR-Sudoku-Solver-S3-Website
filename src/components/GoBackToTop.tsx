@@ -29,7 +29,7 @@ const GoBackToTop = () => {
   return (
     <button
       onClick={goToTop}
-      class="go-back-to-top opacity-0 duration-1000 transition-all bg-gray-700 rounded-full text-white p-2"
+      class="go-back-to-top rounded-full bg-gray-700 p-2 text-white opacity-0 transition-all duration-1000"
     >
       <svg width="24" height="24" viewBox="0 0 256 256">
         <path

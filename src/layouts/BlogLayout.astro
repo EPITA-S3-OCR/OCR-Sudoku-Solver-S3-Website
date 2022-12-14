@@ -43,32 +43,30 @@ if (report === "first-report") {
 ---
 
 <BaseLayout {...Astro.props}>
-  <section class="overflow-hidden dark:bg-gray-800">
-    <div class="max-w-[65ch] px-4 md:px-0 py-4 md:py-8 mx-auto">
-      <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+  <section class="overflow-hidden bg-gray-800">
+    <div class="mx-auto max-w-[65ch] px-4 py-4 md:px-0 md:py-8">
+      <div class="flex flex-col items-center justify-center gap-8 md:flex-row">
         <div>
           <div class="flex justify-between">
             <div>
-              <h2
-                class="text-3xl inline font-bold text-gray-900 dark:text-white"
-              >
+              <h2 class="inline text-3xl font-bold text-white">
                 {reportName}
               </h2>
               <p class="inline text-sm slashed-zero">
                 {report == "first-report" ? "30/10/2022" : "11/12/2022"}
               </p>
             </div>
-            <a class="font-bold bg-white text-gray-900 p-2 rounded" href="/">
+            <a class="rounded bg-white p-2 font-bold text-gray-900" href="/">
               <Icon name="ph:house-simple-bold" height={24} width={24} />
             </a>
           </div>
-          <ul class="mt-4 flex flex-wrap w-full gap-4">
+          <ul class="mt-4 flex w-full flex-wrap gap-4">
             {
               posts.map((post) => (
                 <li class="grow">
                   <a
                     href={post.url}
-                    class="font-bold transition-all text-center hover:bg-gray-500 bg-gray-700 rounded p-2 block"
+                    class="block rounded bg-gray-700 p-2 text-center font-bold transition-all hover:bg-gray-500"
                   >
                     {post.frontmatter.title}
                   </a>
@@ -80,18 +78,18 @@ if (report === "first-report") {
       </div>
     </div>
   </section>
-  <div class="relative pt-10 px-4 pb-32">
+  <div class="relative px-4 pt-10 pb-32">
     <article
-      class="prose-stone md:[&>figure>img]:max-w-[80%] prose-headings:scroll-m-64 prose mx-auto prose-img:mx-auto prose-img:rounded-md prose-figcaption:text-center dark:prose-invert"
+      class="prose prose-invert prose-stone mx-auto prose-headings:scroll-m-64 prose-figcaption:text-center prose-img:mx-auto prose-img:rounded-md md:[&>figure>img]:max-w-[80%]"
     >
       <h1>{title}</h1>
       <slot />
     </article>
     <div
       id="left-sidebar"
-      class="hidden lg:block absolute top-4 right-0 bottom-0"
+      class="absolute top-4 right-0 bottom-0 hidden lg:block"
     >
-      <div id="left-sidebar" class="self-start sticky top-16">
+      <div id="left-sidebar" class="sticky top-16 self-start">
         <TOC
           client:media="(min-width: 768px)"
           time={minutesRead}

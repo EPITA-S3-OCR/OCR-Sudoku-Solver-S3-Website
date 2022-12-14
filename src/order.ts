@@ -5,7 +5,7 @@ export const orderPost = [
   "solver",
   "neural-network",
   "references",
-];
+] as const;
 
 export const orderPostFinal = [
   "intro",
@@ -15,4 +15,4 @@ export const orderPostFinal = [
   "neural-network",
   "user-interface",
   "references",
-];
+] as const;

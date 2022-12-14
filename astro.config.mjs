@@ -5,7 +5,9 @@ import mdx from "@astrojs/mdx";
 import preact from "@astrojs/preact";
 import image from "@astrojs/image";
 import tailwind from "@astrojs/tailwind";
+import prefetch from "@astrojs/prefetch";
 
+// https://astro.build/config
 export default defineConfig({
   markdown: {
     remarkPlugins: [
@@ -16,13 +18,18 @@ export default defineConfig({
     ],
     rehypePlugins: [
       "rehype-figure",
-      // "rehype-mathjax",
       "rehype-katex",
       "rehype-plugin-image-native-lazy-loading",
     ],
     extendDefaultPlugins: true,
   },
-  integrations: [tailwind(), mdx(), preact(), image()],
+  integrations: [
+    tailwind(),
+    mdx(),
+    preact(),
+    image(),
+    prefetch({ selector: "a" }),
+  ],
 });
 function remarkReadingTime() {
   return function (tree, { data }) {
