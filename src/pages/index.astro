@@ -49,7 +49,7 @@ const teams: Member[] = [
   {
     name: "Titouan",
     link: "https://cri.epita.fr/users/titouan.verhille/",
-    description: "Loving C gang for it reliability",
+    description: "Loving C gang for its reliability",
     github: "https://github.com/titouv",
   },
 ];
@@ -76,7 +76,12 @@ const teams: Member[] = [
         {
           teams.map((member) => (
             <li>
-              <a href={member.github} class="font-bold">
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                href={member.github}
+                class="font-bold"
+              >
                 {member.name} :{" "}
               </a>
               <a>{member.description}</a>

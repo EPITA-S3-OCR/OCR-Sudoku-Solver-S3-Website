@@ -45,3 +45,39 @@ The Doxygen module is a tool for **generating documentation for C projects**. Do
 
 **Website:**
 We had the time to create a website to showcase our project. The website includes a brief introduction to the group members, as well as a link to our GitHub repository and technical reports. It was built using the **Astro JavaScript framework** and contains a link to the documentation talked about just earlier. The main motivation behind creating the website was **to practice some web development** and for everyone in the group to contribute to its creation. It also allows us to display our project in a more professional and organized manner, and to potentially share it with a larger audience. Having a website **streamlined the editing and organizing process**, making it easier for us to make changes and updates as needed.
+
+## Tasks distribution
+
+We had not, at the time of the first defense report, added a table giving the distribution of tasks according to the members of the project. We thought that it would be **more interesting to do it for the final report**, however, because we would have **more hindsight on who exactly did what** and especially because it could change from one defense to the next.
+
+During the realization of this project we tried to make everybody work in a **more or less equal way** and to make sure that everybody works a little bit on all the major parts of it. Indeed, where some people of the group had treated less image processing during the first defense for example, they were able to go back and understand and add some code during the preparation to the last defense.
+
+This ensured a **good working atmosphere within the group** since each member of the project understood how the project works as a whole and not just a sub-part of it.
+
+<div class="flex flex-row gap-4 justify-center not-prose">
+
+![First defense](/assets/x-red.svg)
+
+![Final defense](/assets/x-blue.svg)
+
+</div>
+<div class="prose-img:m-0 prose-th:text-center">
+
+|                      | Eliott                  | David                   | Raj                     | Titouan                 |
+| -------------------- | ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| Image processing     |                         |                         | ![](/assets/x-red.svg)  | ![](/assets/x-red.svg)  |
+| Pre-processing       | ![](/assets/x-red.svg)  |                         |                         | ![](/assets/x-red.svg)  |
+| Noise Reduction      |                         |                         | ![](/assets/x-blue.svg) | ![](/assets/x-red.svg)  |
+| Local Threshold      |                         | ![](/assets/x-red.svg)  |                         | ![](/assets/x-red.svg)  |
+| Sobel Edge Detection | ![](/assets/x-blue.svg) |                         |                         | ![](/assets/x-red.svg)  |
+| Hough Transform      |                         |                         | ![](/assets/x-blue.svg) | ![](/assets/x-red.svg)  |
+| Grid Detection       | ![](/assets/x-red.svg)  | ![](/assets/x-blue.svg) |                         | ![](/assets/x-red.svg)  |
+| Image Splitting      | ![](/assets/x-red.svg)  |                         |                         | ![](/assets/x-blue.svg) |
+| Neural Network (XOR) | ![](/assets/x-red.svg)  | ![](/assets/x-red.svg)  | ![](/assets/x-red.svg)  |                         |
+| Neural Network (OCR) | ![](/assets/x-blue.svg) | ![](/assets/x-blue.svg) | ![](/assets/x-blue.svg) | ![](/assets/x-blue.svg) |
+| Initial Solver       |                         | ![](/assets/x-red.svg)  | ![](/assets/x-red.svg)  |                         |
+| Algorithm X          | ![](/assets/x-blue.svg) | ![](/assets/x-blue.svg) | ![](/assets/x-blue.svg) |                         |
+| UI                   | ![](/assets/x-blue.svg) |                         |                         | ![](/assets/x-blue.svg) |
+| Website              |                         | ![](/assets/x-blue.svg) | ![](/assets/x-blue.svg) | ![](/assets/x-red.svg)  |
+
+</div>
